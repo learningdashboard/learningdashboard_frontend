@@ -40,7 +40,7 @@ class App extends Component {
     return (
       <div id="background" className = "d-flex flex-column vh-100"> 
         <CustomNavbar changeViewHandler={this.changeViewHandler}></CustomNavbar>
-        <div className='flex-grow-1'>
+        <div className='d-flex flex-grow-1'>
           {this.viewSwitcher(this.state.view)}
         </div>
       </div>
