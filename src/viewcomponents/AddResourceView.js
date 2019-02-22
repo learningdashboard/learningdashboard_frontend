@@ -61,7 +61,9 @@ export default class AddResourceView extends React.Component {
             userName: this.state.userName,
             selectedTags: this.state.selectedTags
         }
-        alert(JSON.stringify(newResource)); //take this out when done testing!
+
+        this.props.addResourceHandler(newResource);
+        //alert(JSON.stringify(newResource)); //take this out when done testing!
     };
 
     handleCheck = (e) => {
