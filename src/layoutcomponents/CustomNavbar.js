@@ -40,15 +40,12 @@ export default class CustomNavbar extends React.Component {
   render() {
     return (
         <Navbar className="customNavbar" light expand="md">
-          <NavbarBrand href="#" className="mr-5 title"><i className="fas fa-laptop-code fa-lg mr-2"></i>Step Into Tech Learning Dashboard</NavbarBrand>
+          <NavbarBrand href="#" className="mr-5"><i className="fas fa-shoe-prints fa-lg mr-4"></i><strong>Step Into Tech:</strong> Learning Dashboard</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink name="home" onClick={this.clickHandler} href="#">Home</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink name="add" onClick={this.clickHandler} href="#">Add New Resource</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink name="search" onClick={this.clickHandler} href="#">Search Results</NavLink>

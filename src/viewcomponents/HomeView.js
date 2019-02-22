@@ -4,6 +4,18 @@ import {Button, Card, CardHeader, CardBody,CardTitle,CardSubtitle,CardText,CardL
 
 
 export default class HomeView extends React.Component{
+
+    constructor(props){
+        super(props)
+
+        this.clickAddResource=this.clickAddResource.bind(this)
+    }
+
+
+    clickAddResource(){
+        this.props.changeViewHandler("add")
+    }
+
     render(){
         return(
            <div className="container-fluid m-2 d-flex flex-grow-1">
@@ -12,7 +24,7 @@ export default class HomeView extends React.Component{
                         <div className="container-fluid mt-3">
                             <div className ="row mb-3 justify-content-end">
                                 <div className="col-6 text-right">
-                                    <Button className="add-button">Add a New Resource</Button>
+                                    <Button onClick={this.clickAddResource} className="add-button">Add a New Resource</Button>
                                 </div>
                             </div>
                             <div className ="row">
