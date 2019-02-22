@@ -1,11 +1,12 @@
 .bg-resources{
-    background-color:#A0C060 ;
+    background-color:rgba(103, 77, 146, 0.171);
 }
 
 .add-button{
     background-color:#684D92;
+    border-color: #684D92;
 }
 
-.review-button{
-    
+.bg-card-header{
+    background-color: rgba(103, 77, 146, 0.719)
 }
