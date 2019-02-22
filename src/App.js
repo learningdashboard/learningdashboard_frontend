@@ -4,7 +4,7 @@ import CustomNavbar from './layoutcomponents/CustomNavbar.js'
 import HomeView from './viewcomponents/HomeView.js'
 import AddResourceView from './viewcomponents/AddResourceView.js'
 import CourseMaterialsView from './viewcomponents/CourseMaterialsView.js'
-import SearchResultsView from './viewcomponents/SearchResultsView.js'
+import SearchView from './viewcomponents/SearchView.js'
 
 /* STATES:
  * view: this is a string which specifys which page view to render based on switch statement in viewSwitcherHandler()
@@ -62,6 +62,7 @@ class App extends Component {
     let newResourcesArray = this.state.resources;
     newResourcesArray.push(resource)
     this.setState({resources:newResourcesArray})
+    console.log(this.state.resources)
   }
 
   changeViewHandler(view){
@@ -77,7 +78,7 @@ class App extends Component {
       case "course":
         return <CourseMaterialsView></CourseMaterialsView>
       case "search":
-        return <SearchResultsView></SearchResultsView>
+        return <SearchView></SearchView>
       default:
         console.log("no matching view...so returned to homeview")
         return <HomeView></HomeView>;
