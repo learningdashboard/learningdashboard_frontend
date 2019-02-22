@@ -29,24 +29,55 @@ export default class AddResourceView extends React.Component {
                 'Professional Development'
             ],
 
-            title:'',
-            url:'',
-            description:'',
-            userName:'',
+            title: '',
+            url: '',
+            description: '',
+            userName: '',
+            selectedTags: []
         }
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleButtonClick = this.handleButtonClick.bind(this);
+        this.handleCheck = this.handleCheck.bind(this);
     };
 
     handleChange = (e) => {
         if (e.target.id === "title") {
-        this.setState({ title: `${e.target.value}` })
+            this.setState({ title: `${e.target.value}` })
         } else if (e.target.id === "url") {
-            this.setState({ url: `${e.target.value}` })   
+            this.setState({ url: `${e.target.value}` })
         } else if (e.target.id === "description") {
-            this.setState({ description: `${e.target.value}` })   
+            this.setState({ description: `${e.target.value}` })
         } else if (e.target.id === "userName") {
-            this.setState({ userName: `${e.target.value}` })   
-        } 
-      };
+            this.setState({ userName: `${e.target.value}` })
+        }
+    };
+
+    handleButtonClick = () => {
+        const newResource = {
+            title: this.state.title,
+            url: this.state.url,
+            description: this.state.description,
+            userName: this.state.userName
+        }
+        alert(JSON.stringify(newResource));
+    };
+
+    handleCheck = (e) => {
+        const currentTags = this.state.selectedTags;
+        const tag = e.target.id;
+
+        if (currentTags.includes(tag)) {
+            const indexToRemove = currentTags.indexOf(tag);
+            currentTags.splice(indexToRemove, 1);
+        } else {
+            currentTags.push(tag);
+        }
+
+        this.setState({ selectedTags: currentTags });
+
+        alert(currentTags);
+    };
 
 
 
@@ -64,63 +95,63 @@ export default class AddResourceView extends React.Component {
                 </div>
 
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-10">
                         <InputGroup>
                             <InputGroupAddon addonType="prepend" >Title</InputGroupAddon>
-                            <Input id="title" value={this.state.title} onChange={e => this.handleChange(e)} placeholder="150 characters max"/>
+                            <Input id="title" value={this.state.title} onChange={e => this.handleChange(e)} placeholder="150 characters max" />
                         </InputGroup>
                         <br />
                     </div>
                 </div>
 
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-10">
                         <InputGroup>
                             <InputGroupAddon addonType="prepend">URL</InputGroupAddon>
-                            <Input id="url" value={this.state.url} onChange={e => this.handleChange(e)} placeholder="150 characters max"/>
+                            <Input id="url" value={this.state.url} onChange={e => this.handleChange(e)} placeholder="150 characters max" />
                         </InputGroup>
                         <br />
                     </div>
                 </div>
 
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-10">
                         <InputGroup>
                             <InputGroupAddon addonType="prepend">Description</InputGroupAddon>
-                            <Input id="description" type='textarea' value={this.state.description} onChange={e => this.handleChange(e)}/>
+                            <Input id="description" type='textarea' value={this.state.description} onChange={e => this.handleChange(e)} />
                         </InputGroup>
                         <br />
                     </div>
                 </div>
 
-                
+
                 <h2>Select any that apply: </h2>
-                        <br/>
+                <br />
 
                 <div className="row">
-                    {resourceTags.map((task, i) =>
+                    {resourceTags.map((tag, i) =>
                         <div className="col-4">
                             <FormGroup check>
                                 <Label check>
-                                    <Input type="checkbox" />{task}
+                                    <Input id={tag} type="checkbox" onChange={e => this.handleCheck(e)} />{tag}
                                 </Label>
                             </FormGroup>
-                           
+
                         </div>
                     )}
                 </div>
 
 
                 <br />
-                        <h2>Submitted By: </h2>
-                        <br/>
+                <h2>Submitted By: </h2>
+                <br />
 
 
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-10">
                         <InputGroup>
                             <InputGroupAddon addonType="prepend">Name</InputGroupAddon>
-                            <Input id="userName" value={this.state.userName} onChange={e => this.handleChange(e)} placeholder="150 characters max"/>
+                            <Input id="userName" value={this.state.userName} onChange={e => this.handleChange(e)} placeholder="150 characters max" />
                         </InputGroup>
                         <br />
                     </div>
@@ -128,8 +159,12 @@ export default class AddResourceView extends React.Component {
 
 
 
+                <div className="row">
+                    <div className="col-10">
+                        <Button onClick={this.handleButtonClick}>Submit</Button>
+                    </div>
+                </div>
 
-                <Button>Submit</Button>
 
             </div>
 
