@@ -58,9 +58,10 @@ export default class AddResourceView extends React.Component {
             title: this.state.title,
             url: this.state.url,
             description: this.state.description,
-            userName: this.state.userName
+            userName: this.state.userName,
+            selectedTags: this.state.selectedTags
         }
-        alert(JSON.stringify(newResource));
+        alert(JSON.stringify(newResource)); //take this out when done testing!
     };
 
     handleCheck = (e) => {
@@ -76,7 +77,7 @@ export default class AddResourceView extends React.Component {
 
         this.setState({ selectedTags: currentTags });
 
-        alert(currentTags);
+        alert(currentTags); ///take this out
     };
 
 
