@@ -11,34 +11,15 @@ export default class AddResourceView extends React.Component {
         super(props);
 
         this.state = {
-            resourceTags: [
-                'JavaScript',
-                'Arrays',
-                'Loops',
-                'Conditionals',
-                'React',
-                'JS Express',
-                'Axios',
-                'Bootstrap',
-                'CSS',
-                'HTML',
-                'mySQL',
-                'Testing/TDD',
-                'AWS',
-                'Tutorials / Practice Exercises',
-                'Professional Development'
-            ],
-
             title: '',
             url: '',
             description: '',
             userName: '',
-            selectedTags: []
+            resourceTags: [],
+
         }
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleButtonClick = this.handleButtonClick.bind(this);
-        this.handleCheck = this.handleCheck.bind(this);
+
     };
 
     handleChange = (e) => {
@@ -59,15 +40,25 @@ export default class AddResourceView extends React.Component {
             url: this.state.url,
             description: this.state.description,
             userName: this.state.userName,
-            selectedTags: this.state.selectedTags
+            resourceTags: this.state.resourceTags
         }
 
         this.props.addResourceHandler(newResource);
+
+        this.unCheck();
+
+        this.setState({
+            title: "",
+            url: "",
+            description: "",
+            userName: "",
+            resourceTags: []
+        });
         //alert(JSON.stringify(newResource)); //take this out when done testing!
     };
 
     handleCheck = (e) => {
-        const currentTags = this.state.selectedTags;
+        const currentTags = this.state.resourceTags;
         const tag = e.target.id;
 
         if (currentTags.includes(tag)) {
@@ -77,17 +68,24 @@ export default class AddResourceView extends React.Component {
             currentTags.push(tag);
         };
 
-        this.setState({ selectedTags: currentTags });
+        this.setState({ resourceTags: currentTags });
 
-        //alert(currentTags); 
+        alert(currentTags); 
     };
 
-
+    unCheck = () =>  {
+        var x = document.getElementsByClassName("checkboxes");
+        
+        for(let i=0; i<=x.length-1; i++) {
+            x.item(i).checked = false;
+        }   
+        alert('Success! You resource has been added!');
+      }    
 
 
     render() {
 
-        const resourceTags = this.state.resourceTags;
+        const tagList = this.props.tagList;
 
         return (
             <div className="container-fluid">
@@ -132,11 +130,18 @@ export default class AddResourceView extends React.Component {
                 <br />
 
                 <div className="row">
-                    {resourceTags.map((tag, i) =>
+                    {tagList.map((tag, i) =>
                         <div className="col-4">
                             <FormGroup check>
                                 <Label check>
-                                    <Input id={tag} type="checkbox" onChange={e => this.handleCheck(e)} />{tag}
+                                    <Input 
+                                        className="checkboxes"
+                                        key={i}
+                                        id={tag} 
+                                        type="checkbox" 
+                                        onChange={e => this.handleCheck(e)}     
+                                        />
+                                        {tag}
                                 </Label>
                             </FormGroup>
 
