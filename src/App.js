@@ -12,6 +12,7 @@ import SearchView from './viewcomponents/SearchView.js'
  * resources: an array of resource objects as dummy data for front end
  * [
  * {
+ * id:<number>
  * title: <string>,
  * description: <string>,
  * url: <string>,
@@ -27,7 +28,7 @@ import SearchView from './viewcomponents/SearchView.js'
  * [<string>, <string>]
  */
 
-const dummyTaskList = [
+const dummyTagList = [
   "JavaScript",
   "Conditionals",
   "Axios",
@@ -45,25 +46,61 @@ const dummyTaskList = [
   "Professional Development"
 ]
 
+const dummyResourceList = [
+  {"id":0,
+   "title":"test1",
+   "description":"test description",
+   "url":"testurl",
+   "userName":"Nicola",
+   "dateAdded": new Date(2019,1,1),
+   "resourceTags":["JavaScript"]},
+   {"id":1,
+   "title":"test2",
+   "description":"test description",
+   "url":"testurl2",
+   "userName":"Nicola",
+   "dateAdded": new Date(2019,1,1),
+   "resourceTags":["JavaScript","Loops"]},
+   
+]
+
+let uniqueId=2;
 
 class App extends Component {
   constructor(props){
     super(props)
     this.state = {
       view:"home",
-      resources:[],
-      tags: dummyTaskList
+      resources:dummyResourceList,
+      tags: dummyTagList
     }
     this.changeViewHandler = this.changeViewHandler.bind(this)
     this.addResourceHandler = this.addResourceHandler.bind(this)
+    this.searchResourcesHandler = this.searchResourcesHandler.bind(this)
   }
 
   addResourceHandler(resource){
+    resource.id = uniqueId
+    uniqueId ++
+
     let newResourcesArray = this.state.resources;
     newResourcesArray.push(resource)
     this.setState({resources:newResourcesArray})
     console.log(this.state.resources)
   }
+
+  searchResourcesHandler(taglist){
+    
+    return this.state.resources.filter(
+      (resource)=>
+          {for(let i=0; i<taglist.length;i++){
+            if(resource.resourceTags.includes(taglist[i])){
+              return true
+            }
+          }}
+    )
+  }
+
 
   changeViewHandler(view){
     this.setState({view:view})
@@ -78,7 +115,7 @@ class App extends Component {
       case "course":
         return <CourseMaterialsView></CourseMaterialsView>
       case "search":
-        return <SearchView></SearchView>
+        return <SearchView taglist={this.state.tags} searchResourcesHandler={this.searchResourcesHandler}></SearchView>
       default:
         console.log("no matching view...so returned to homeview")
         return <HomeView></HomeView>;

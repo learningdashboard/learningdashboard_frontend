@@ -59,7 +59,7 @@ export default class AddResourceView extends React.Component {
             url: this.state.url,
             description: this.state.description,
             userName: this.state.userName,
-            selectedTags: this.state.selectedTags
+            resourceTags: this.state.selectedTags
         }
 
         this.props.addResourceHandler(newResource);
