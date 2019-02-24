@@ -81,6 +81,7 @@ class App extends Component {
 
   addResourceHandler(resource){
     resource.id = uniqueId
+    resource.dateAdded = new Date();
     uniqueId ++
 
     let newResourcesArray = this.state.resources;

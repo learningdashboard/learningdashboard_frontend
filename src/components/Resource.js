@@ -40,8 +40,8 @@ class Resource extends React.Component{
                     <br/>
                     <span><strong>Added on:</strong>{this.dateConverter(this.props.resource.dateAdded)}</span>
                     <br/>
-                    <span><strong>Added by:</strong>{this.props.resource.userName}</span>*/}
-                    <CardLink className="d-block" href="#">Link</CardLink>
+                    <span><strong>Added by:</strong>{this.props.resource.userName}</span>
+                    <CardLink className="d-block" href="#">{this.props.resource.url}</CardLink>
                   </CardText>
               </CardBody>
             </Collapse>
