@@ -111,7 +111,7 @@ class App extends Component {
       case "home":
         return <HomeView changeViewHandler={this.changeViewHandler}></HomeView>
       case "add":
-        return <AddResourceView addResourceHandler={this.addResourceHandler} taglist={this.state.tags}></AddResourceView> 
+        return <AddResourceView addResourceHandler={this.addResourceHandler} tagList={this.state.tags}></AddResourceView> 
       case "course":
         return <CourseMaterialsView></CourseMaterialsView>
       case "search":
