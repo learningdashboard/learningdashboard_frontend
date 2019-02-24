@@ -25,8 +25,8 @@ describe('addResourceHandler', ()=>{
     'url': '#',
     'userName': "TestUser",
     'dateAdded': new Date(2019,1,1),
-    'resourceTags': ["javascript", "conditionals"]}]
-    )
+    'resourceTags': ["javascript", "conditionals"],
+    'id':0}])
     })
 })
 
