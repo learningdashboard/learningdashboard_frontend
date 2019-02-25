@@ -13,8 +13,8 @@ export default class SearchView extends React.Component{
             searchResults:[]
         }
 
-        this.onSubmit = this.onSubmit.bind(this)
-        this.onClick = this.onClick.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleClick = this.handleClick.bind(this)
 
         console.log(this.state.checkBoxStatus)
     }
@@ -61,7 +61,7 @@ export default class SearchView extends React.Component{
                                                     }
                                                     return(
                                                     <div key={tag} className = "col-4 tag-text-size">
-                                                        <button id={tag} className={"badge badge-secondary " + selectStatusClass} onClick={this.onClick}>{tag}</button>
+                                                        <button  type="button" id={tag} className={"badge badge-secondary " + selectStatusClass} onClick={this.handleClick}>{tag}</button>
                                                     </div>
                                                     )
                                                     }
@@ -70,12 +70,12 @@ export default class SearchView extends React.Component{
         
     }
 
-    onClick(event){
+    handleClick(event){
         event.preventDefault()
         this.toggleTagStatus(event.target.id)
     }
 
-    onSubmit(event){
+    handleSubmit(event){
         event.preventDefault()
         this.setState({searchTags:[]}) //reset list of search tags
         this.setState({searchTags:this.getSelectedTags()}) //set list of search tags to currently clicked boxes
@@ -95,11 +95,12 @@ export default class SearchView extends React.Component{
     render(){
         return(
            <div className="container-fluid d-flex flex-column">
+
                 {/*row for the search tags*/}
                 <div className="row justify-content-center">
                     <div className="col-10">
                         <h6 className="mt-3">Select Tags:</h6>
-                        <Form onSubmit={this.onSubmit}>
+                        <Form onSubmit={this.handleSubmit}>
                             <div className="row">
                                 {this.generateCheckBoxes()}
                             </div>
@@ -115,17 +116,21 @@ export default class SearchView extends React.Component{
                 {/*row for the search results*/}
                 <div className = "row results-background flex-grow-1">
                     <div className="col-12">
+                        
+                        {/*row for the serach tags*/}
                         <div className="row justify-content-center">
                             <div className="col-10">
                                 <div className="mt-3"><span>{this.generateSearchTagList()} </span></div>
                             </div>
                         </div>
 
+                        {/*row for the results*/}
                         <div className="row pt-2 justify-content-center">
                             <div className="col-10">
                                 <SearchResultList resources={this.state.searchResults}></SearchResultList>
                             </div>
                         </div>
+
                     </div>
                 </div>
            </div>

@@ -7,3 +7,6 @@
     border: none;
 }
 
+.add-button:hover{
+    background-color: #1F45DF;
+}
