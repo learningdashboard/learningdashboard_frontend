@@ -70,7 +70,7 @@ class SearchResultList extends React.Component{
 
   render(){
     return(
-          <div className="mt-2">
+          <div className="">
             {this.resultListOutput()}
           </div>
     )

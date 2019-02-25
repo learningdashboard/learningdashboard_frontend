@@ -117,7 +117,7 @@ export default class AddResourceView extends React.Component {
                                                     selectStatusClass = "selected"
                                                 }
                                                 return(
-                                                    <div key={tag} className = "col-4 tag-text-size">
+                                                    <div key={tag} className = "col-6 col-md-4 tag-text-size">
                                                         <button type="button" id={tag} className={"badge badge-secondary " + selectStatusClass} onClick={this.handleTagClick}>{tag}</button>
                                                     </div>
                                                 )
@@ -132,6 +132,7 @@ export default class AddResourceView extends React.Component {
 
         return (
             <div className="container-fluid">
+
                 <div className="row justify-content-center">
                     <div className="col-10">
                         <h6 className="mt-5 mb-0">Submit a new resource:</h6>
@@ -184,7 +185,7 @@ export default class AddResourceView extends React.Component {
                     </div>
                 </div>
 
-                <div className="row mt-5 justify-content-center">
+                <div className="row mt-5 mb-4 justify-content-center">
                     <div className="col-10">
                         <Button className="submit-button" onClick={this.handleSubmit} type="button">Submit</Button>
                     </div>

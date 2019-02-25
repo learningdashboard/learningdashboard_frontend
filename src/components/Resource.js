@@ -5,7 +5,7 @@ import './Resource.css'
 
 /*Result component should have the following props:
   clickHandler...the method that gets called when result card is expanded
-  result....this is a JSON resource object 
+  resource....this is a JSON resource object 
   collapsed....boolean that tells card whether it is collapsed or not
 */
 class Resource extends React.Component{
@@ -20,6 +20,12 @@ class Resource extends React.Component{
     return date.toLocaleString("en-GB", options)
   }
 
+  generateTagList(){
+    const taglist = this.props.resource.resourceTags
+    const arrayOfTags = taglist.map((tag) =>  <span key={tag} className="tag-text-size" ><span className="badge badge-secondary">{tag}</span><span> </span></span>)
+    return arrayOfTags   
+}
+
 
   render() {
     return (
@@ -28,8 +34,39 @@ class Resource extends React.Component{
           bootstrap card*/}
           <Card className="mb-2">
             <CardHeader className="custom-card-header" onClick={this.props.clickHandler}>
-              <h6 className="pl-0 pr-0 d-inline">{this.props.resource.title}</h6>
-              <i className="fas fa-angle-down fa-lg d-inline float-right"></i>
+              <div className="container-fluid">
+
+                <div className="row align-items-center">
+                  <div className="col-11">
+                    
+                    <div className="row">
+                        <div className="col-12">
+                          <h6 className="pl-0 pr-0 d-inline">{this.props.resource.title}</h6>
+                        </div>
+                    </div>
+
+                    <div className="row mt-1">
+                      <div className="col-12">
+                        {this.generateTagList()}
+                      </div>
+                    </div>
+
+                    <div className="row">
+                      <div className="col-12">
+                        <CardLink className="d-block" href="#">{this.props.resource.url}</CardLink>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div className="col-1">
+                    <i className="fas fa-angle-down fa-lg float-right"></i>
+                  </div>
+
+                </div>
+              </div>
+
+              
             </CardHeader>
             {/*whichever parts you want to collapse put in a reactStrap Collapse component
              and just specify whethe the isOpen prop is true or fale to control collapse
@@ -38,7 +75,7 @@ class Resource extends React.Component{
               <CardBody>
                     <div className="mb-1 text-muted"><em>Added on: {this.dateConverter(this.props.resource.dateAdded)} by {this.props.resource.userName}</em></div>
                     <div><p>{this.props.resource["description"]}</p></div>
-                    <CardLink className="d-block" href="#">{this.props.resource.url}</CardLink>
+                   
               </CardBody>
             </Collapse>
           </Card>

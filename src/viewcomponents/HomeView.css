@@ -1,5 +1,6 @@
 .bg-resources{
     background-color:whitesmoke;
+    background-clip: border-box;
 }
 
 .add-button{
@@ -9,4 +10,21 @@
 
 .add-button:hover{
     background-color: #1F45DF;
+}
+
+.start-search-button{
+    background-color:#FFC130;
+    border: none;
+}
+
+.start-search-button:hover{
+    background-color:#FFB406;
+}
+
+.custom-scroll{
+    overflow-y: scroll;
+}
+
+.custom-heading{
+    color: #1F45DF;
 }
