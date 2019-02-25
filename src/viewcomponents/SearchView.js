@@ -8,37 +8,45 @@ export default class SearchView extends React.Component{
         super(props)
         
         this.state = {
-            checkBoxStatus: this.createCheckBoxStatusObject(),
+            tagStatus: this.createTagStatusObject(),
             searchTags:[],
             searchResults:[]
         }
 
         this.onSubmit = this.onSubmit.bind(this)
-        this.onChange = this.onChange.bind(this)
+        this.onClick = this.onClick.bind(this)
 
         console.log(this.state.checkBoxStatus)
     }
 
-    createCheckBoxStatusObject(){
-        let checkBoxStatus = {}
+    createTagStatusObject(){
+        let tagStatus = {}
         for(let i=0; i<this.props.taglist.length; i++){
-            checkBoxStatus[this.props.taglist[i]] = false
+            tagStatus[this.props.taglist[i]] = false
         }
-        return checkBoxStatus 
+        return tagStatus 
     }
 
     resetcheckBoxStatus(){
-        let checkBoxStatus = {}
-        for(let i=0; i<this.props.taglist.length; i++){
-            checkBoxStatus[this.props.taglist[i]] = false
+        let newTagStatus = this.state.tagStatus
+        for(let i in newTagStatus ){
+            newTagStatus[i] = false
         }
-        this.setState({checkBoxStatus:checkBoxStatus})
+        this.setState({tagStatus:newTagStatus})
+    }
+
+    toggleTagStatus(tag){
+        console.log(this.state.tagStatus)
+        let newTagStatus = this.state.tagStatus
+        newTagStatus[tag] = !newTagStatus[tag]
+        console.log(newTagStatus)
+        this.setState({tagStatus:newTagStatus})
     }
 
     getSelectedTags(){
         const selectedTags = []
-        for(let tag in this.state.checkBoxStatus){
-            if(this.state.checkBoxStatus[tag] == true){
+        for(let tag in this.state.tagStatus){
+            if(this.state.tagStatus[tag] == true){
                 selectedTags.push(tag)
             }
         }
@@ -47,25 +55,24 @@ export default class SearchView extends React.Component{
 
     generateCheckBoxes(){
         const taglist = this.props.taglist
-        const arrayOfCheckboxes = taglist.map((tag) =>
-                                                    <div key={tag} className = "col-4">
-                                                    <FormGroup check>
-                                                         <Input id={tag} type="checkbox" onChange={this.onChange} checked={this.state.checkBoxStatus[tag]} />
-                                                         <Label for={tag} check>{tag + ": "}</Label>
-                                                    </FormGroup>  
+        const arrayOfTags = taglist.map((tag) =>   {let selectStatusClass = ""
+                                                    if(this.state.tagStatus[tag]==true){
+                                                        selectStatusClass = "selected"
+                                                    }
+                                                    return(
+                                                    <div key={tag} className = "col-4 tag-text-size">
+                                                        <button id={tag} className={"badge badge-secondary " + selectStatusClass} onClick={this.onClick}>{tag}</button>
                                                     </div>
-                                             )      
-        return arrayOfCheckboxes   
+                                                    )
+                                                    }
+                                        )      
+        return arrayOfTags   
         
     }
 
-    onChange(event){
-        let newCheckBoxStatus = this.state.checkBoxStatus
-
-        newCheckBoxStatus[event.target.id] = event.target.checked
-    
-        this.setState({checkBoxStatus:newCheckBoxStatus})
-        
+    onClick(event){
+        event.preventDefault()
+        this.toggleTagStatus(event.target.id)
     }
 
     onSubmit(event){
@@ -79,7 +86,7 @@ export default class SearchView extends React.Component{
 
 
     generateSearchTagList(){
-        const searchTagList = this.state.searchTags.map((tag)=><span key={tag}>{tag+" "}</span>)
+        const searchTagList = this.state.searchTags.map((tag)=><span className="tag-text-size" ><span className="badge badge-secondary" key={tag}>{tag}</span><span> </span></span>)
         return searchTagList
     }
 
@@ -87,33 +94,38 @@ export default class SearchView extends React.Component{
 
     render(){
         return(
-           <div className="container-fluid">
-                <div className="row">
-                    <div className="col-12">
-                        <h5 className="h5 mt-3">Select Tags:</h5>
+           <div className="container-fluid d-flex flex-column">
+                {/*row for the search tags*/}
+                <div className="row justify-content-center">
+                    <div className="col-10">
+                        <h6 className="mt-3">Select Tags:</h6>
                         <Form onSubmit={this.onSubmit}>
                             <div className="row">
                                 {this.generateCheckBoxes()}
                             </div>
-                            <div className="row">
+                            <div className="row mt-4 mb-4">
                                 <div className = "col-4">
-                                    <Button type="submit" className="mt-3">Search</Button>
+                                    <Button type="submit" className="search-button">Search</Button>
                                 </div>
                             </div>
                         </Form>
                     </div>
                 </div>
 
-                <div className="row mt-5">
+                {/*row for the search results*/}
+                <div className = "row results-background flex-grow-1">
                     <div className="col-12">
-                        <h5 className="h5">Search results for:</h5>
-                        <p>{this.generateSearchTagList()}</p>
-                    </div>
-                </div>
+                        <div className="row justify-content-center">
+                            <div className="col-10">
+                                <h6 className="mt-3">Results for: <span>{this.generateSearchTagList()} </span></h6>
+                            </div>
+                        </div>
 
-                <div className="row mt-2">
-                    <div className="col-12">
-                        <SearchResultList resources={this.state.searchResults}></SearchResultList>
+                        <div className="row pt-2 justify-content-center">
+                            <div className="col-10">
+                                <SearchResultList resources={this.state.searchResults}></SearchResultList>
+                            </div>
+                        </div>
                     </div>
                 </div>
            </div>
