@@ -1,0 +1,33 @@
+.search-button{
+    background-color: #4465ED;
+    border: none;
+}
+
+.search-button:hover{
+    background-color: #1F45DF;
+    border:none;
+}
+
+.results-background{
+    background-color:whitesmoke;
+}
+
+.selected{
+    background-color: #FFCD57 ;
+    color: black;
+    border:none;
+}
+
+.tag-text-size{
+    font-size: 120%;
+}
+
+.tag-label{
+    background-color: silver;
+    border: none;
+    color: white;
+}
+
+.scroll{
+    overflow-y: scroll;
+}

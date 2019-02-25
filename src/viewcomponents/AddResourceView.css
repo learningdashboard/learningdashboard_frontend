@@ -1,0 +1,25 @@
+.selected{
+    background-color: #FFCD57 ;
+    color: black;
+    border:none;
+}
+
+.tag-text-size{
+    font-size: 120%;
+}
+
+.tag-label{
+    background-color: silver;
+    border: none;
+    color: white;
+}
+
+.submit-button{
+    background-color: #4465ED;
+    border: none;
+}
+
+.submit-button:hover{
+    background-color: #1F45DF;
+    border:none;
+}

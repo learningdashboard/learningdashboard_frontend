@@ -16,12 +16,16 @@ export default class AddResourceView extends React.Component {
             description: '',
             userName: '',
             resourceTags: [],
+            tagStatus: this.createTagStatusObject()
 
         }
 
-
+        this.handleTagClick = this.handleTagClick.bind(this);
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     };
 
+    //handles changes to text inputs storing values in state
     handleChange = (e) => {
         if (e.target.id === "title") {
             this.setState({ title: `${e.target.value}` })
@@ -34,144 +38,160 @@ export default class AddResourceView extends React.Component {
         }
     };
 
-    handleButtonClick = () => {
+    //handles clicking the tag buttons and stores in state
+    handleTagClick(event){
+        event.preventDefault()
+        this.toggleTagStatus(event.target.id)
+    }
+
+
+    //handle submitting form
+    handleSubmit(e){
+        e.preventDefault()
         const newResource = {
             title: this.state.title,
             url: this.state.url,
             description: this.state.description,
             userName: this.state.userName,
-            resourceTags: this.state.resourceTags
+            resourceTags: this.getSelectedTags()
         }
 
+        
         this.props.addResourceHandler(newResource);
 
-        this.unCheck();
+        this.resetTagStatus()
 
+        this.clearForm()
+
+        alert("Thank you for submitting a new resource")
+
+    }
+
+    clearForm(){
         this.setState({
             title: "",
             url: "",
             description: "",
             userName: "",
             resourceTags: []
-        });
-        //alert(JSON.stringify(newResource)); //take this out when done testing!
-    };
+            });
+        }
 
-    handleCheck = (e) => {
-        const currentTags = this.state.resourceTags;
-        const tag = e.target.id;
+    createTagStatusObject(){
+        let tagStatus = {}
+        for(let i=0; i<this.props.taglist.length; i++){
+            tagStatus[this.props.taglist[i]] = false
+        }
+        return tagStatus 
+    }
 
-        if (currentTags.includes(tag)) {
-            const indexToRemove = currentTags.indexOf(tag);
-            currentTags.splice(indexToRemove, 1);
-        } else {
-            currentTags.push(tag);
-        };
+    resetTagStatus(){
+        let newTagStatus = this.state.tagStatus
+        for(let i in newTagStatus ){
+            newTagStatus[i] = false
+        }
+        this.setState({tagStatus:newTagStatus})
+    }
 
-        this.setState({ resourceTags: currentTags });
+    toggleTagStatus(tag){
+        let newTagStatus = this.state.tagStatus
+        newTagStatus[tag] = !newTagStatus[tag]
+        this.setState({tagStatus:newTagStatus})
+    }
 
-        alert(currentTags); 
-    };
+    getSelectedTags(){
+        const selectedTags = []
+        for(let tag in this.state.tagStatus){
+            if(this.state.tagStatus[tag] == true){
+                selectedTags.push(tag)
+            }
+        }
+        return selectedTags
+    }
 
-    unCheck = () =>  {
-        var x = document.getElementsByClassName("checkboxes");
-        
-        for(let i=0; i<=x.length-1; i++) {
-            x.item(i).checked = false;
-        }   
-        alert('Success! You resource has been added!');
-      }    
+    generateCheckBoxes(){
+        const taglist = this.props.taglist
+        const arrayOfTags = taglist.map((tag) =>   
+                                                {let selectStatusClass = ""
+                                                if(this.state.tagStatus[tag]==true){
+                                                    selectStatusClass = "selected"
+                                                }
+                                                return(
+                                                    <div key={tag} className = "col-6 col-md-4 tag-text-size">
+                                                        <button type="button" id={tag} className={"badge badge-secondary " + selectStatusClass} onClick={this.handleTagClick}>{tag}</button>
+                                                    </div>
+                                                )
+                                                }
+                                        )      
+        return arrayOfTags   
+    }
+
 
 
     render() {
 
-        const tagList = this.props.tagList;
-
         return (
             <div className="container-fluid">
-                <div className="row">
-                    <div className="col-12">
-                        <h1>Add a New Resource</h1>
+
+                <div className="row justify-content-center">
+                    <div className="col-10">
+                        <h6 className="mt-5 mb-0">Submit a new resource:</h6>
                     </div>
                 </div>
 
-                <div className="row">
-                    <div className="col-10">
-                        <InputGroup>
+                <Form onSubmit={this.onSubmit}>
+                    <div className="row mt-3 justify-content-center">
+                        <div className="col-10">
+                            <InputGroup>
                             <InputGroupAddon addonType="prepend" >Title</InputGroupAddon>
                             <Input id="title" value={this.state.title} onChange={e => this.handleChange(e)} placeholder="150 characters max" />
                         </InputGroup>
-                        <br />
                     </div>
                 </div>
 
-                <div className="row">
+                <div className="row mt-3 justify-content-center">
                     <div className="col-10">
                         <InputGroup>
                             <InputGroupAddon addonType="prepend">URL</InputGroupAddon>
                             <Input id="url" value={this.state.url} onChange={e => this.handleChange(e)} placeholder="150 characters max" />
                         </InputGroup>
-                        <br />
                     </div>
                 </div>
 
-                <div className="row">
+                <div className="row mt-3 justify-content-center">
                     <div className="col-10">
                         <InputGroup>
                             <InputGroupAddon addonType="prepend">Description</InputGroupAddon>
                             <Input id="description" type='textarea' value={this.state.description} onChange={e => this.handleChange(e)} />
                         </InputGroup>
-                        <br />
                     </div>
                 </div>
 
-
-                <h2>Select any that apply: </h2>
-                <br />
-
-                <div className="row">
-                    {tagList.map((tag, i) =>
-                        <div className="col-4">
-                            <FormGroup check>
-                                <Label check>
-                                    <Input 
-                                        className="checkboxes"
-                                        key={i}
-                                        id={tag} 
-                                        type="checkbox" 
-                                        onChange={e => this.handleCheck(e)}     
-                                        />
-                                        {tag}
-                                </Label>
-                            </FormGroup>
-
-                        </div>
-                    )}
-                </div>
-
-
-                <br />
-                <h2>Submitted By: </h2>
-                <br />
-
-
-                <div className="row">
+                <div className="row mt-3 justify-content-center">
                     <div className="col-10">
                         <InputGroup>
-                            <InputGroupAddon addonType="prepend">Name</InputGroupAddon>
+                            <InputGroupAddon addonType="prepend">Submitted By</InputGroupAddon>
                             <Input id="userName" value={this.state.userName} onChange={e => this.handleChange(e)} placeholder="150 characters max" />
                         </InputGroup>
-                        <br />
                     </div>
                 </div>
 
-
-
-                <div className="row">
+                <div className="row mt-4 justify-content-center">
                     <div className="col-10">
-                        <Button onClick={this.handleButtonClick} type="submit">Submit</Button>
+                        <h6>Please tag your resource by topic:</h6>
+                        <div className="row">
+                            {this.generateCheckBoxes()}
+                        </div>
                     </div>
                 </div>
+
+                <div className="row mt-5 mb-4 justify-content-center">
+                    <div className="col-10">
+                        <Button className="submit-button" onClick={this.handleSubmit} type="button">Submit</Button>
+                    </div>
+                </div>
+
+                </Form>
 
 
             </div>

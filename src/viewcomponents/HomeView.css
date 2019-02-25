@@ -1,12 +1,30 @@
 .bg-resources{
-    background-color:rgba(103, 77, 146, 0.171);
+    background-color:whitesmoke;
+    background-clip: border-box;
 }
 
 .add-button{
-    background-color:#684D92;
-    border-color: #684D92;
+    background-color:#4465ED;
+    border: none;
 }
 
-.bg-card-header{
-    background-color: rgba(103, 77, 146, 0.719)
+.add-button:hover{
+    background-color: #1F45DF;
+}
+
+.start-search-button{
+    background-color:#FFC130;
+    border: none;
+}
+
+.start-search-button:hover{
+    background-color:#FFB406;
+}
+
+.custom-scroll{
+    overflow-y: scroll;
+}
+
+.custom-heading{
+    color: #1F45DF;
 }

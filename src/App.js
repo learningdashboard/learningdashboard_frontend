@@ -48,23 +48,58 @@ const dummyTagList = [
 
 const dummyResourceList = [
   {"id":0,
-   "title":"test1",
-   "description":"test description",
-   "url":"testurl",
+   "title":"JavaScript Tutorial",
+   "description":"a broad introduction to JavaScript fundamentals ",
+   "url":"testurl@testurl.com",
    "userName":"Nicola",
    "dateAdded": new Date(2019,1,1),
    "resourceTags":["JavaScript"]},
    {"id":1,
-   "title":"test2",
-   "description":"test description",
-   "url":"testurl2",
+   "title":"A guide to looping in Javascript",
+   "description":"an explaination of various loops in JavaScript",
+   "url":"testurl2@testurl.com",
    "userName":"Nicola",
    "dateAdded": new Date(2019,1,1),
    "resourceTags":["JavaScript","Loops"]},
+   {"id":2,
+   "title":"A guide to looping in Javascript",
+   "description":"an explaination of various loops in JavaScript",
+   "url":"testurl2@testurl.com",
+   "userName":"Nicola",
+   "dateAdded": new Date(2019,1,1),
+   "resourceTags":["JavaScript","Loops"]},
+   {"id":3,
+   "title":"A guide to looping in Javascript",
+   "description":"an explaination of various loops in JavaScript",
+   "url":"testurl2@testurl.com",
+   "userName":"Nicola",
+   "dateAdded": new Date(2019,1,1),
+   "resourceTags":["JavaScript","Loops"]},
+   {"id":4,
+   "title":"A guide to looping in Javascript",
+   "description":"an explaination of various loops in JavaScript",
+   "url":"testurl2@testurl.com",
+   "userName":"Nicola",
+   "dateAdded": new Date(2019,1,1),
+   "resourceTags":["JavaScript","Loops"]},
+   {"id":5,
+   "title":"A guide to looping in Javascript",
+   "description":"an explaination of various loops in JavaScript",
+   "url":"testurl2@testurl.com",
+   "userName":"Nicola",
+   "dateAdded": new Date(2019,1,1),
+   "resourceTags":["JavaScript","Loops"]},
+   {"id":6,
+   "title":"A guide to looping in Javascript",
+   "description":"an explaination of various loops in JavaScript",
+   "url":"testurl2@testurl.com",
+   "userName":"Nicola",
+   "dateAdded": new Date(2019,1,1),
+   "resourceTags":["JavaScript","Loops"]}
    
 ]
 
-let uniqueId=2;
+let uniqueId=7;
 
 class App extends Component {
   constructor(props){
@@ -110,28 +145,26 @@ class App extends Component {
   viewSwitcher(view){
     switch(view){
       case "home":
-        return <HomeView changeViewHandler={this.changeViewHandler}></HomeView>
+        return <HomeView resources={dummyResourceList} changeViewHandler={this.changeViewHandler}></HomeView>
       case "add":
-        return <AddResourceView addResourceHandler={this.addResourceHandler} tagList={this.state.tags}></AddResourceView> 
+        return <AddResourceView addResourceHandler={this.addResourceHandler} taglist={this.state.tags}></AddResourceView> 
       case "course":
         return <CourseMaterialsView></CourseMaterialsView>
       case "search":
         return <SearchView taglist={this.state.tags} searchResourcesHandler={this.searchResourcesHandler}></SearchView>
       default:
         console.log("no matching view...so returned to homeview")
-        return <HomeView></HomeView>;
+        return <HomeView resources={dummyResourceList} changeViewHandler={this.changeViewHandler}></HomeView>;
     }
   }
 
 
   render() {
     return (
-      <div id="background" className = "d-flex flex-column vh-100"> 
+        <div>
         <CustomNavbar changeViewHandler={this.changeViewHandler}></CustomNavbar>
-        <div className='d-flex flex-grow-1'>
-          {this.viewSwitcher(this.state.view)}
+        {this.viewSwitcher(this.state.view)}
         </div>
-      </div>
     )
   }
 }
