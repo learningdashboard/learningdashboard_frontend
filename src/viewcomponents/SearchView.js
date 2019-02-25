@@ -115,7 +115,7 @@ export default class SearchView extends React.Component{
 
                 {/*row for the search results*/}
                 <div className = "row results-background flex-grow-1">
-                    <div className="col-12">
+                    <div className="col-12 h-100 scroll">
                         
                         {/*row for the serach tags*/}
                         <div className="row justify-content-center">
@@ -126,7 +126,7 @@ export default class SearchView extends React.Component{
 
                         {/*row for the results*/}
                         <div className="row pt-2 justify-content-center">
-                            <div className="col-10">
+                            <div className="col-10 ">
                                 <SearchResultList resources={this.state.searchResults}></SearchResultList>
                             </div>
                         </div>
