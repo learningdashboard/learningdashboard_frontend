@@ -86,7 +86,7 @@ export default class SearchView extends React.Component{
 
 
     generateSearchTagList(){
-        const searchTagList = this.state.searchTags.map((tag)=><span className="tag-text-size" ><span className="badge badge-secondary" key={tag}>{tag}</span><span> </span></span>)
+        const searchTagList = this.state.searchTags.map((tag)=><span key={tag} className="tag-text-size" ><span className="badge tag-label">{tag}</span><span> </span></span>)
         return searchTagList
     }
 
@@ -103,7 +103,7 @@ export default class SearchView extends React.Component{
                             <div className="row">
                                 {this.generateCheckBoxes()}
                             </div>
-                            <div className="row mt-4 mb-4">
+                            <div className="row mt-4 mb-5">
                                 <div className = "col-4">
                                     <Button type="submit" className="search-button">Search</Button>
                                 </div>
@@ -117,7 +117,7 @@ export default class SearchView extends React.Component{
                     <div className="col-12">
                         <div className="row justify-content-center">
                             <div className="col-10">
-                                <h6 className="mt-3">Results for: <span>{this.generateSearchTagList()} </span></h6>
+                                <div className="mt-3"><span>{this.generateSearchTagList()} </span></div>
                             </div>
                         </div>
 

@@ -21,3 +21,9 @@
 .tag-text-size{
     font-size: 120%;
 }
+
+.tag-label{
+    background-color: silver;
+    border: none;
+    color: white;
+}

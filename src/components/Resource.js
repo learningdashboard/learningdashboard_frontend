@@ -1,6 +1,7 @@
 import React from 'react';
 import { Collapse, Button, CardBody, Card, CardTitle, CardSubtitle, CardHeader,
           CardText, ListGroup, ListGroupItem, CardLink} from 'reactstrap';
+import './Resource.css'
 
 /*Result component should have the following props:
   clickHandler...the method that gets called when result card is expanded
@@ -26,8 +27,8 @@ class Resource extends React.Component{
           {/*use reactstrap card, cardheader and cardbody components to create a
           bootstrap card*/}
           <Card className="mb-2">
-            <CardHeader onClick={this.props.clickHandler}>
-              <p className="pl-0 pr-0 d-inline">{this.props.resource.title}</p>
+            <CardHeader className="custom-card-header" onClick={this.props.clickHandler}>
+              <h6 className="pl-0 pr-0 d-inline">{this.props.resource.title}</h6>
               <i className="fas fa-angle-down fa-lg d-inline float-right"></i>
             </CardHeader>
             {/*whichever parts you want to collapse put in a reactStrap Collapse component
@@ -35,14 +36,9 @@ class Resource extends React.Component{
               in this case we pass in whether the card should be collapsed as a prop*/}
             <Collapse isOpen={!this.props.collapsed}>
               <CardBody>
-                  <CardText className="mb-2">
-                    <span>{this.props.resource["description"]}</span>
-                    <br/>
-                    <span><strong>Added on:</strong>{this.dateConverter(this.props.resource.dateAdded)}</span>
-                    <br/>
-                    <span><strong>Added by:</strong>{this.props.resource.userName}</span>
+                    <div className="mb-1 text-muted"><em>Added on: {this.dateConverter(this.props.resource.dateAdded)} by {this.props.resource.userName}</em></div>
+                    <div><p>{this.props.resource["description"]}</p></div>
                     <CardLink className="d-block" href="#">{this.props.resource.url}</CardLink>
-                  </CardText>
               </CardBody>
             </Collapse>
           </Card>
