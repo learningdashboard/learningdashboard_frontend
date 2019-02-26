@@ -15,8 +15,9 @@
 }
 
 .submit-button{
-    background-color: #4465ED;
+    background-image:linear-gradient(to right, #007BC7, rgb(15, 146, 228));
     border: none;
+    box-shadow: 3px 3px 2px grey;
 }
 
 .submit-button:hover{
@@ -25,11 +26,14 @@
 }
 
 .input-group-text {
-    background-color:rgb(228, 233, 252); 
+    background-image: linear-gradient(to right, rgba(188, 152, 219, 0.5), #bc98db  );
     width: 130px;
     font-weight: bold; 
+  
 }
 
 .form-control {
-    background-color: #fff;
+
+    background-image: linear-gradient(to right, #fff, rgba(188, 152, 219, 0.2)  );
+    
 }
