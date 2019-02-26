@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/learningdashboard/learningdashboard_frontend/precache-manifest.ffcfd1876799a0123dc215481a41fc04.js"
+  "/learningdashboard_frontend/precache-manifest.28bd5d57d8669f6d634f16156db6d865.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/learningdashboard/learningdashboard_frontend/index.html", {
+workbox.routing.registerNavigationRoute("/learningdashboard_frontend/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
