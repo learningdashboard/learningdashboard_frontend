@@ -4,8 +4,9 @@
 }
 
 .add-button{
-    background-color:#4465ED;
-    border: none;
+    background-image:linear-gradient(to right, #007BC7, rgb(15, 146, 228));
+    border: solid;
+    border-color: grey; 
 }
 
 .add-button:hover{
@@ -13,8 +14,10 @@
 }
 
 .start-search-button{
-    background-color:#FFC130;
-    border: none;
+    background-image:linear-gradient(to right, #6610f2, #9266b9 );
+    
+    border: solid;
+    border-color: grey; 
 }
 
 .start-search-button:hover{
@@ -27,4 +30,8 @@
 
 .custom-heading{
     color: #1F45DF;
+}
+
+.card-body{
+    background-color: rgba(211, 211, 211,0.5);
 }
