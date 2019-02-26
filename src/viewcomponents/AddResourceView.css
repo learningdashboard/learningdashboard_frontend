@@ -23,3 +23,13 @@
     background-color: #1F45DF;
     border:none;
 }
+
+.input-group-text {
+    background-color:rgb(228, 233, 252); 
+    width: 130px;
+    font-weight: bold; 
+}
+
+.form-control {
+    background-color: #fff;
+}

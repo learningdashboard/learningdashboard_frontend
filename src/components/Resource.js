@@ -53,7 +53,7 @@ class Resource extends React.Component{
 
                     <div className="row">
                       <div className="col-12">
-                        <CardLink className="d-block" href="#">{this.props.resource.url}</CardLink>
+                        <CardLink className="d-block"><a href={this.props.resource.url} target="_blank">{this.props.resource.url}</a></CardLink>
                       </div>
                     </div>
 
