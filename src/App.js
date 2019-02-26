@@ -50,7 +50,7 @@ const dummyResourceList = [
   {"id":0,
    "title":"JavaScript Tutorial",
    "description":"a broad introduction to JavaScript fundamentals ",
-   "url":"testurl@testurl.com",
+   "url":"https://techreturners.com/",
    "userName":"Nicola",
    "dateAdded": new Date(2019,1,1),
    "resourceTags":["JavaScript"]},

@@ -138,7 +138,7 @@ export default class AddResourceView extends React.Component {
 
                 <div className="row justify-content-center">
                     <div className="col-10">
-                        <h6 className="mt-5 mb-0">Submit a new resource:</h6>
+                        <h6 className="mt-5 mb-0">Add a new resource:</h6>
                     </div>
                 </div>
 
@@ -190,7 +190,7 @@ export default class AddResourceView extends React.Component {
 
                     <div className="row mt-5 mb-4 justify-content-center">
                         <div className="col-10">
-                            <Button className="submit-button" onClick={this.handleSubmit} type="button">Submit</Button>
+                            <Button className="submit-button" onClick={this.handleSubmit} type="button">Save</Button>
                         </div>
                     </div>
 
