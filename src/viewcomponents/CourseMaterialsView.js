@@ -6,14 +6,25 @@ export default class CourseMaterialsView extends React.Component{
         super(props);
         
         this.state = {
-            courseMaterials: [
-                "JavaScript",
-                "HTML",
-                "React",
-                "Tutorials"
-            ]
+            courseMaterials = [
+                {
+                    course: "JavaScript",
+                    resource: "https://developer.mozilla.org/en-US/docs/Learn/JavaScript", 
+                    tutorial: "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps"
+                },
+                {
+                    course:"HTML",
+                    resource: "https://developer.mozilla.org/en-US/docs/Glossary/HTML#Concept_and_syntax",
+                    tutorial: "https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML"
+                },
+                {
+                    course: "CSS", 
+                    resource: "https://developer.mozilla.org/en-US/docs/Glossary/CSS",
+                    tutorial: "https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics"
+                }
+            ]  
         }
-    }  
+    }
 
     render(){
         return(
