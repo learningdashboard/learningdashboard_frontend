@@ -42,7 +42,7 @@ export default class CustomNavbar extends React.Component {
     return (
       <Navbar className="customNavbar" light expand="md">
         <h4 >
-          <img className="mr-4" src='/images/logo.png' width="100"></img>
+          <img className="mr-4" src='./images/logo.png' width="100"></img>
           <span className="random">
             <strong>Step Into Tech:</strong> Learning Dashboard
            </span>
