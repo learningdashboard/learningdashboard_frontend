@@ -21,7 +21,7 @@
 }
 
 .submit-button:hover{
-    background-color: #1F45DF;
+    background-image:linear-gradient(to right, #012e4b, rgb(15, 146, 228));
     border:none;
 }
 

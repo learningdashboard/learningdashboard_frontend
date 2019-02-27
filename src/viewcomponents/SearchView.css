@@ -1,11 +1,12 @@
 .search-button{
-    background-color: #4465ED;
+    background-image:linear-gradient(to right, #007BC7, rgb(15, 146, 228));
     border: none;
+    box-shadow: 3px 3px 2px grey;
 }
 
 .search-button:hover{
-    background-color: #1F45DF;
-    border:none;
+    background-image:linear-gradient(to right, #012e4b, rgb(15, 146, 228));
+    border:none;    
 }
 
 .results-background{

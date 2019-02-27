@@ -32,7 +32,7 @@ export default class HomeView extends React.Component{
                  
                     <div className ="row mt-2 mb-3 justify-content-end">
                             <Button type="button" onClick={this.clickAddResource} className="add-button mr-2">Add a New Resource</Button>
-                            <Button onClick={this.clickSearch} className="start-search-button">Search All Resources</Button>
+                            <Button type="button" onClick={this.clickSearch} className="start-search-button">Search All Resources</Button>
                     </div>
 
                     <div className ="row mt-3">
