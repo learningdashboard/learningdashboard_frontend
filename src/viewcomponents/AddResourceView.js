@@ -39,14 +39,14 @@ export default class AddResourceView extends React.Component {
     };
 
     //handles clicking the tag buttons and stores in state
-    handleTagClick(event){
+    handleTagClick(event) {
         event.preventDefault()
         this.toggleTagStatus(event.target.id)
     }
 
 
     //handle submitting form
-    handleSubmit(e){
+    handleSubmit(e) {
         e.preventDefault()
         const newResource = {
             title: this.state.title,
@@ -56,7 +56,7 @@ export default class AddResourceView extends React.Component {
             resourceTags: this.getSelectedTags()
         }
 
-        
+
         this.props.addResourceHandler(newResource);
 
         this.resetTagStatus()
@@ -67,63 +67,66 @@ export default class AddResourceView extends React.Component {
 
     }
 
-    clearForm(){
+    clearForm() {
         this.setState({
             title: "",
             url: "",
             description: "",
             userName: "",
             resourceTags: []
-            });
-        }
+        });
+    }
 
-    createTagStatusObject(){
+    createTagStatusObject() {
         let tagStatus = {}
-        for(let i=0; i<this.props.taglist.length; i++){
+        for (let i = 0; i < this.props.taglist.length; i++) {
             tagStatus[this.props.taglist[i]] = false
         }
-        return tagStatus 
+        return tagStatus
     }
 
-    resetTagStatus(){
+    resetTagStatus() {
         let newTagStatus = this.state.tagStatus
-        for(let i in newTagStatus ){
+        for (let i in newTagStatus) {
             newTagStatus[i] = false
         }
-        this.setState({tagStatus:newTagStatus})
+        this.setState({ tagStatus: newTagStatus })
     }
 
-    toggleTagStatus(tag){
+    toggleTagStatus(tag) {
         let newTagStatus = this.state.tagStatus
         newTagStatus[tag] = !newTagStatus[tag]
-        this.setState({tagStatus:newTagStatus})
+        this.setState({ tagStatus: newTagStatus })
     }
 
-    getSelectedTags(){
+    getSelectedTags() {
         const selectedTags = []
-        for(let tag in this.state.tagStatus){
-            if(this.state.tagStatus[tag] == true){
+        for (let tag in this.state.tagStatus) {
+            if (this.state.tagStatus[tag] == true) {
                 selectedTags.push(tag)
             }
         }
         return selectedTags
     }
 
-    generateCheckBoxes(){
+    generateCheckBoxes() {
         const taglist = this.props.taglist
-        const arrayOfTags = taglist.map((tag) =>   
-                                                {let selectStatusClass = ""
-                                                if(this.state.tagStatus[tag]==true){
-                                                    selectStatusClass = "selected"
-                                                }
-                                                return(
-                                                    <div key={tag} className = "col-6 col-md-4 tag-text-size">
-                                                        <button type="button" id={tag} className={"badge badge-secondary " + selectStatusClass} onClick={this.handleTagClick}>{tag}</button>
-                                                    </div>
-                                                )
-                                                }
-                                        )      
-        return arrayOfTags   
+        const arrayOfTags = taglist.map((tag) => {
+            let selectStatusClass = ""
+            if (this.state.tagStatus[tag] == true) {
+                selectStatusClass = "selected"
+            }
+            return (
+                <div key={tag} className="col-6 col-md-4 tag-text-size">
+                    <button type="button" 
+                    id={tag} 
+                    className={"badge badge-secondary " + selectStatusClass} 
+                    onClick={this.handleTagClick}>{tag}</button>
+                </div>
+            )
+        }
+        )
+        return arrayOfTags
     }
 
 
@@ -135,7 +138,7 @@ export default class AddResourceView extends React.Component {
 
                 <div className="row justify-content-center">
                     <div className="col-10">
-                        <h6 className="mt-5 mb-0">Submit a new resource:</h6>
+                        <h6 className="mt-5 mb-0">Add a new resource:</h6>
                     </div>
                 </div>
 
@@ -143,53 +146,53 @@ export default class AddResourceView extends React.Component {
                     <div className="row mt-3 justify-content-center">
                         <div className="col-10">
                             <InputGroup>
-                            <InputGroupAddon addonType="prepend" >Title</InputGroupAddon>
-                            <Input id="title" value={this.state.title} onChange={e => this.handleChange(e)} placeholder="150 characters max" />
-                        </InputGroup>
-                    </div>
-                </div>
-
-                <div className="row mt-3 justify-content-center">
-                    <div className="col-10">
-                        <InputGroup>
-                            <InputGroupAddon addonType="prepend">URL</InputGroupAddon>
-                            <Input id="url" value={this.state.url} onChange={e => this.handleChange(e)} placeholder="150 characters max" />
-                        </InputGroup>
-                    </div>
-                </div>
-
-                <div className="row mt-3 justify-content-center">
-                    <div className="col-10">
-                        <InputGroup>
-                            <InputGroupAddon addonType="prepend">Description</InputGroupAddon>
-                            <Input id="description" type='textarea' value={this.state.description} onChange={e => this.handleChange(e)} />
-                        </InputGroup>
-                    </div>
-                </div>
-
-                <div className="row mt-3 justify-content-center">
-                    <div className="col-10">
-                        <InputGroup>
-                            <InputGroupAddon addonType="prepend">Submitted By</InputGroupAddon>
-                            <Input id="userName" value={this.state.userName} onChange={e => this.handleChange(e)} placeholder="150 characters max" />
-                        </InputGroup>
-                    </div>
-                </div>
-
-                <div className="row mt-4 justify-content-center">
-                    <div className="col-10">
-                        <h6>Please tag your resource by topic:</h6>
-                        <div className="row">
-                            {this.generateCheckBoxes()}
+                                <InputGroupAddon className="inputAddon" addonType="prepend" >Title</InputGroupAddon>
+                                <Input id="title" value={this.state.title} onChange={e => this.handleChange(e)} placeholder="150 characters max" />
+                            </InputGroup>
                         </div>
                     </div>
-                </div>
 
-                <div className="row mt-5 mb-4 justify-content-center">
-                    <div className="col-10">
-                        <Button className="submit-button" onClick={this.handleSubmit} type="button">Submit</Button>
+                    <div className="row mt-3 justify-content-center">
+                        <div className="col-10">
+                            <InputGroup>
+                                <InputGroupAddon className="inputAddon" addonType="prepend">URL</InputGroupAddon>
+                                <Input id="url" value={this.state.url} onChange={e => this.handleChange(e)} placeholder="150 characters max" />
+                            </InputGroup>
+                        </div>
                     </div>
-                </div>
+
+                    <div className="row mt-3 justify-content-center">
+                        <div className="col-10">
+                            <InputGroup>
+                                <InputGroupAddon className="inputAddon" addonType="prepend">Description</InputGroupAddon>
+                                <Input id="description" type='textarea' value={this.state.description} onChange={e => this.handleChange(e)} />
+                            </InputGroup>
+                        </div>
+                    </div>
+
+                    <div className="row mt-3 justify-content-center">
+                        <div className="col-10">
+                            <InputGroup>
+                                <InputGroupAddon className="inputAddon" addonType="prepend">Submitted By</InputGroupAddon>
+                                <Input id="userName" value={this.state.userName} onChange={e => this.handleChange(e)} placeholder="150 characters max" />
+                            </InputGroup>
+                        </div>
+                    </div>
+
+                    <div className="row mt-4 justify-content-center">
+                        <div className="col-10">
+                            <h6>Please tag your resource by topic:</h6>
+                            <div className="row">
+                                {this.generateCheckBoxes()}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row mt-5 mb-4 justify-content-center">
+                        <div className="col-10">
+                            <Button className="submit-button" onClick={this.handleSubmit} type="button">Save</Button>
+                        </div>
+                    </div>
 
                 </Form>
 

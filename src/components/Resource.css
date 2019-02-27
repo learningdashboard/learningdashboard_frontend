@@ -1,3 +1,4 @@
 .custom-card-header{
-    background-color:rgb(228, 233, 252);
+    
+    background-image: linear-gradient(to right,  rgb(228, 233, 252), #bc98db);
 }
