@@ -56,6 +56,9 @@ export default class CustomNavbar extends React.Component {
               <NavLink name="home" onClick={this.clickHandler} href="#">Home</NavLink>
             </NavItem>
             <NavItem>
+              <NavLink name="add" onClick={this.clickHandler} href="#">Add Resource</NavLink>
+            </NavItem>
+            <NavItem>
               <NavLink name="search" onClick={this.clickHandler} href="#">Search</NavLink>
             </NavItem>
             <NavItem>
