@@ -46,7 +46,7 @@ export default class AddResourceView extends React.Component {
 
 
     //handle submitting form
-    handleSubmit(e) {
+    async handleSubmit(e) {
         e.preventDefault()
         const newResource = {
             title: this.state.title,
@@ -55,9 +55,9 @@ export default class AddResourceView extends React.Component {
             userName: this.state.userName,
             resourceTags: this.getSelectedTags()
         }
+       
 
-
-        this.props.addResourceHandler(newResource);
+        await this.props.addResourceHandler(newResource);
 
         this.resetTagStatus()
 
@@ -128,7 +128,6 @@ export default class AddResourceView extends React.Component {
         )
         return arrayOfTags
     }
-
 
 
     render() {
