@@ -5,6 +5,8 @@ import HomeView from './viewcomponents/HomeView.js'
 import AddResourceView from './viewcomponents/AddResourceView.js'
 import CourseMaterialsView from './viewcomponents/CourseMaterialsView.js'
 import SearchView from './viewcomponents/SearchView.js'
+import ResourceService from './service/ResourceService';
+
 
 /* STATES:
  * view: this is a string which specifys which page view to render based on switch statement in viewSwitcherHandler()
@@ -108,21 +110,22 @@ class App extends Component {
       view:"home",
       resources:dummyResourceList,
       tags: dummyTagList
-    }
+    };
     this.changeViewHandler = this.changeViewHandler.bind(this)
     this.addResourceHandler = this.addResourceHandler.bind(this)
     this.searchResourcesHandler = this.searchResourcesHandler.bind(this)
-  }
+  };
 
-  addResourceHandler(resource){
-    resource.id = uniqueId
-    resource.dateAdded = new Date();
-    uniqueId ++
 
-    let newResourcesArray = this.state.resources;
-    newResourcesArray.push(resource)
-    this.setState({resources:newResourcesArray})
-    console.log(this.state.resources)
+  async addResourceHandler(resource){
+    const response = await ResourceService.addResource(resource);
+    resource.id = response;
+
+    let currentListOfResources = await ResourceService.getResources();
+
+    this.setState({
+      resources: currentListOfResources
+    });
   }
 
   searchResourcesHandler(taglist){
