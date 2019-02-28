@@ -12,7 +12,7 @@ export default class SearchView extends React.Component{
             tagStatus: [],
             searchTags:[],
             searchResults:[],
-            taglist:[]
+            taglist:this.createTagStatusObject()
         }
 
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -48,7 +48,7 @@ export default class SearchView extends React.Component{
     }
 
     generateTagList(){
-        const arrayOfTags = this.state.taglist.map((tag) =>   {let selectStatusClass = ""
+        const arrayOfTags = this.props.taglist.map((tag) =>   {let selectStatusClass = ""
                                                     if(this.state.tagStatus[tag]==true){
                                                         selectStatusClass = "selected"
                                                     }
@@ -61,20 +61,12 @@ export default class SearchView extends React.Component{
         return arrayOfTags;
     }
 
-    async componentDidMount(){
-        let taglist
-        try{
-            taglist = await ResourceService.getTags();
-        }catch(e){
-            console.log(e)
-        }  
-
+    createTagStatusObject() {
         let tagStatus = {}
-        for(let i=0; i<taglist.length; i++){
-            tagStatus[taglist[i]] = false
+        for (let i = 0; i < this.props.taglist.length; i++) {
+            tagStatus[this.props.taglist[i]] = false
         }
-    
-        this.setState({taglist:taglist, tagStatus:tagStatus})
+        return tagStatus
     }
 
     handleClick(event){

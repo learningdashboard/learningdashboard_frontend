@@ -2,7 +2,7 @@ import React from 'react'
 import './AddResourceView.css'
 import { InputGroup, InputGroupAddon, InputGroupText, Input } from 'reactstrap';
 import { Button, Form, FormGroup, Label, FormText } from 'reactstrap';
-import ResourceService from './service/ResourceService';
+import ResourceService from '../service/ResourceService';
 
 
 
@@ -59,11 +59,12 @@ export default class AddResourceView extends React.Component {
 
         await ResourceService.addResource(newResource);
 
-        this.resetTagStatus()
+        //don't need to clear forms if you redirect back to homeview
+        //this.resetTagStatus()
 
-        this.clearForm()
+        //this.clearForm()
 
-        alert("Thank you for submitting a new resource")
+        this.props.changeViewHandler("home")
 
     }
 
