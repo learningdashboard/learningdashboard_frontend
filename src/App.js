@@ -5,6 +5,7 @@ import HomeView from './viewcomponents/HomeView.js'
 import AddResourceView from './viewcomponents/AddResourceView.js'
 import CourseMaterialsView from './viewcomponents/CourseMaterialsView.js'
 import SearchView from './viewcomponents/SearchView.js'
+import ResourceService from './service/ResourceService.js'
 
 
 /* STATES:
@@ -34,12 +35,23 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      view:"home"
+      view:"home",
+      tags:[]
     };
     this.changeViewHandler = this.changeViewHandler.bind(this)
-    this.addResourceHandler = this.addResourceHandler.bind(this)
   };
 
+  async componentDidMount(){
+    let taglist
+    try{
+        taglist = await ResourceService.getTags();
+    }catch(e){
+        console.log(e)
+    }  
+
+    this.setState({tags:taglist})
+
+  }
 
 
   changeViewHandler(view){
@@ -51,7 +63,7 @@ class App extends Component {
       case "home":
         return <HomeView changeViewHandler={this.changeViewHandler}></HomeView>
       case "add":
-        return <AddResourceView addResourceHandler={this.addResourceHandler} taglist={this.state.tags}></AddResourceView> 
+        return <AddResourceView changeViewHandler={this.changeViewHandler} addResourceHandler={this.addResourceHandler} taglist={this.state.tags}></AddResourceView> 
       case "course":
         return <CourseMaterialsView></CourseMaterialsView>
       case "search":
