@@ -111,7 +111,6 @@ class App extends Component {
     }
     this.changeViewHandler = this.changeViewHandler.bind(this)
     this.addResourceHandler = this.addResourceHandler.bind(this)
-    this.searchResourcesHandler = this.searchResourcesHandler.bind(this)
   }
 
   addResourceHandler(resource){
@@ -125,17 +124,6 @@ class App extends Component {
     console.log(this.state.resources)
   }
 
-  searchResourcesHandler(taglist){
-    
-    return this.state.resources.filter(
-      (resource)=>
-          {for(let i=0; i<taglist.length;i++){
-            if(resource.resourceTags.includes(taglist[i])){
-              return true
-            }
-          }}
-    )
-  }
 
 
   changeViewHandler(view){
@@ -145,16 +133,16 @@ class App extends Component {
   viewSwitcher(view){
     switch(view){
       case "home":
-        return <HomeView resources={dummyResourceList} changeViewHandler={this.changeViewHandler}></HomeView>
+        return <HomeView changeViewHandler={this.changeViewHandler}></HomeView>
       case "add":
         return <AddResourceView addResourceHandler={this.addResourceHandler} taglist={this.state.tags}></AddResourceView> 
       case "course":
         return <CourseMaterialsView></CourseMaterialsView>
       case "search":
-        return <SearchView taglist={this.state.tags} searchResourcesHandler={this.searchResourcesHandler}></SearchView>
+        return <SearchView taglist={this.state.tags}></SearchView>
       default:
         console.log("no matching view...so returned to homeview")
-        return <HomeView resources={dummyResourceList} changeViewHandler={this.changeViewHandler}></HomeView>;
+        return <HomeView changeViewHandler={this.changeViewHandler}></HomeView>;
     }
   }
 

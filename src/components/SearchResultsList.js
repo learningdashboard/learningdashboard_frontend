@@ -55,14 +55,14 @@ class SearchResultList extends React.Component{
     for(let i=0; i<this.props.resources.length;i++){
       let resource = this.props.resources[i]
       let collapsed
-      if(this.state.openResource == resource.id){
+      if(this.state.openResource == resource.resourceId){
         collapsed = false;
       } else {
         collapsed = true;
       }
       //set a key for each element of the array...this helps React to identify which
       //components need to actually rerender when render is called
-      resultListToRender.push(<Resource key={resource.id} resource={resource} clickHandler={this.toggle.bind(this,resource.id)} collapsed={collapsed}></Resource>)
+      resultListToRender.push(<Resource key={resource.resourceId} resource={resource} clickHandler={this.toggle.bind(this,resource.resourceId)} collapsed={collapsed}></Resource>)
     }
 
     return resultListToRender;

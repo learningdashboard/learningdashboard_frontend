@@ -2,6 +2,7 @@ import React from 'react'
 import './SearchView.css'
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap'
 import SearchResultList from '../components/SearchResultsList'
+import ResourceService from '../service/ResourceService'
 
 export default class SearchView extends React.Component{
     constructor(props){
@@ -10,13 +11,13 @@ export default class SearchView extends React.Component{
         this.state = {
             tagStatus: this.createTagStatusObject(),
             searchTags:[],
-            searchResults:[]
+            searchResults:[],
+            taglist:[]
         }
 
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleClick = this.handleClick.bind(this)
 
-        console.log(this.state.checkBoxStatus)
     }
 
     createTagStatusObject(){
@@ -53,9 +54,8 @@ export default class SearchView extends React.Component{
         return selectedTags
     }
 
-    generateTags(){
-        const taglist = this.props.taglist
-        const arrayOfTags = taglist.map((tag) =>   {let selectStatusClass = ""
+    generateTagList(){
+        const arrayOfTags = this.state.taglist.map((tag) =>   {let selectStatusClass = ""
                                                     if(this.state.tagStatus[tag]==true){
                                                         selectStatusClass = "selected"
                                                     }
@@ -64,25 +64,44 @@ export default class SearchView extends React.Component{
                                                         <button  type="button" id={tag} className={"badge badge-secondary " + selectStatusClass} onClick={this.handleClick}>{tag}</button>
                                                     </div>
                                                     )
-                                                    }
-                                        )      
-        return arrayOfTags   
-        
+                                                    })
+        return arrayOfTags;
+    }
+
+    async componentDidMount(){
+        let taglist
+        try{
+            taglist = await ResourceService.getTags();
+        }catch(e){
+            console.log(e)
+        }  
+        this.setState({taglist:taglist})
     }
 
     handleClick(event){
         event.preventDefault()
+        console.log(event.target.id)
         this.toggleTagStatus(event.target.id)
     }
 
-    handleSubmit(event){
+    async handleSubmit(event){
         event.preventDefault()
         this.setState({searchTags:[]}) //reset list of search tags
-        this.setState({searchTags:this.getSelectedTags()}) //set list of search tags to currently clicked boxes
-        let searchResults = this.props.searchResourcesHandler(this.getSelectedTags()) //search
+
+        let searchTags = this.getSelectedTags()
+        this.setState({searchTags:searchTags}) //set list of search tags to currently clicked boxes
+
+        let searchResults
+        try{
+            searchResults = await ResourceService.search(searchTags)
+        }catch(e){
+            console.log(e)
+        }
+
         this.setState({searchResults:searchResults}) //update state with new results
         this.resetcheckBoxStatus() //reset 
     }
+
 
 
     generateSearchTagList(){
@@ -102,7 +121,7 @@ export default class SearchView extends React.Component{
                         <h6 className="mt-3">Select Tags:</h6>
                         <Form onSubmit={this.handleSubmit}>
                             <div className="row">
-                                {this.generateTags()}
+                                {this.generateTagList()}
                             </div>
                             <div className="row mt-4">
                                 <div className = "col-4">
@@ -116,7 +135,7 @@ export default class SearchView extends React.Component{
                 {/*row for the search results*/}
                 <div className = "mt-5 row border-top">
                     <div className="col-12">
-                        
+                         
                         {/*row for the serach tags*/}
                         <div className="row mt-3 justify-content-center">
                             <div className="col-10">

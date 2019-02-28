@@ -22,8 +22,13 @@ class Resource extends React.Component{
 
   generateTagList(){
     const taglist = this.props.resource.resourceTags
-    const arrayOfTags = taglist.map((tag) =>  <span key={tag} className="tag-text-size" ><span className="badge badge-secondary">{tag}</span><span> </span></span>)
-    return arrayOfTags   
+    if(taglist != null){
+      const arrayOfTags = taglist.map((tag) =>  <span key={tag} className="tag-text-size" ><span className="badge badge-secondary">{tag}</span><span> </span></span>)
+      return arrayOfTags  
+    } else {
+      return null
+    }
+
 }
 
 
@@ -53,14 +58,14 @@ class Resource extends React.Component{
 
                     <div className="row mt-2">
                       <div className="col-1">
-                        <CardLink className="d-block"><a href={this.props.resource.url} target="_blank"><i class="fas fa-external-link-alt fa-1x"></i></a></CardLink>
+                        <CardLink className="d-block" href={this.props.resource.url} target="_blank"><i className="fas fa-external-link-alt fa-1x"></i></CardLink>
                         
                       </div>
                       <div className="col-1">
-                        <CardLink className="d-block"><a href={this.props.resource.url} target="_blank"><i class="fas fa-trash fa-1x"></i></a></CardLink>
+                        <CardLink className="d-block" href={this.props.resource.url} target="_blank"><i className="fas fa-trash fa-1x"></i></CardLink>
                       </div>
                       <div className="col-1">
-                        <CardLink className="d-block"><a href={this.props.resource.url} target="_blank"><i class="fas fa-edit fa-1x"></i></a></CardLink>
+                        <CardLink className="d-block" href={this.props.resource.url} target="_blank"><i className="fas fa-edit fa-1x"></i></CardLink>
                       </div>
                     </div>
 
