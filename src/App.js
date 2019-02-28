@@ -30,78 +30,6 @@ import ResourceService from './service/ResourceService';
  * [<string>, <string>]
  */
 
-const dummyTagList = [
-  "JavaScript",
-  "Conditionals",
-  "Axios",
-  "HTML",
-  "AWS",
-  "Arrays",
-  "React",
-  "Bootstrap",
-  "mySQL",
-  "Tutorials/Practice Exercises",
-  "Loops",
-  "JS Express",
-  "CSS",
-  "Testing/TDD",
-  "Professional Development"
-]
-
-const dummyResourceList = [
-  {"id":0,
-   "title":"JavaScript Tutorial",
-   "description":"a broad introduction to JavaScript fundamentals ",
-   "url":"https://techreturners.com/",
-   "userName":"Nicola",
-   "dateAdded": new Date(2019,1,1),
-   "resourceTags":["JavaScript"]},
-   {"id":1,
-   "title":"A guide to looping in Javascript",
-   "description":"an explaination of various loops in JavaScript",
-   "url":"testurl2@testurl.com",
-   "userName":"Nicola",
-   "dateAdded": new Date(2019,1,1),
-   "resourceTags":["JavaScript","Loops"]},
-   {"id":2,
-   "title":"A guide to looping in Javascript",
-   "description":"an explaination of various loops in JavaScript",
-   "url":"testurl2@testurl.com",
-   "userName":"Nicola",
-   "dateAdded": new Date(2019,1,1),
-   "resourceTags":["JavaScript","Loops"]},
-   {"id":3,
-   "title":"A guide to looping in Javascript",
-   "description":"an explaination of various loops in JavaScript",
-   "url":"testurl2@testurl.com",
-   "userName":"Nicola",
-   "dateAdded": new Date(2019,1,1),
-   "resourceTags":["JavaScript","Loops"]},
-   {"id":4,
-   "title":"A guide to looping in Javascript",
-   "description":"an explaination of various loops in JavaScript",
-   "url":"testurl2@testurl.com",
-   "userName":"Nicola",
-   "dateAdded": new Date(2019,1,1),
-   "resourceTags":["JavaScript","Loops"]},
-   {"id":5,
-   "title":"A guide to looping in Javascript",
-   "description":"an explaination of various loops in JavaScript",
-   "url":"testurl2@testurl.com",
-   "userName":"Nicola",
-   "dateAdded": new Date(2019,1,1),
-   "resourceTags":["JavaScript","Loops"]},
-   {"id":6,
-   "title":"A guide to looping in Javascript",
-   "description":"an explaination of various loops in JavaScript",
-   "url":"testurl2@testurl.com",
-   "userName":"Nicola",
-   "dateAdded": new Date(2019,1,1),
-   "resourceTags":["JavaScript","Loops"]}
-   
-]
-
-let uniqueId=7;
 
 class App extends Component {
   constructor(props){
@@ -113,7 +41,6 @@ class App extends Component {
     };
     this.changeViewHandler = this.changeViewHandler.bind(this)
     this.addResourceHandler = this.addResourceHandler.bind(this)
-    this.searchResourcesHandler = this.searchResourcesHandler.bind(this)
   };
 
 
@@ -128,18 +55,6 @@ class App extends Component {
     });
   }
 
-  searchResourcesHandler(taglist){
-    
-    return this.state.resources.filter(
-      (resource)=>
-          {for(let i=0; i<taglist.length;i++){
-            if(resource.resourceTags.includes(taglist[i])){
-              return true
-            }
-          }}
-    )
-  }
-
 
   changeViewHandler(view){
     this.setState({view:view})
@@ -148,16 +63,16 @@ class App extends Component {
   viewSwitcher(view){
     switch(view){
       case "home":
-        return <HomeView resources={dummyResourceList} changeViewHandler={this.changeViewHandler}></HomeView>
+        return <HomeView changeViewHandler={this.changeViewHandler}></HomeView>
       case "add":
         return <AddResourceView addResourceHandler={this.addResourceHandler} taglist={this.state.tags}></AddResourceView> 
       case "course":
         return <CourseMaterialsView></CourseMaterialsView>
       case "search":
-        return <SearchView taglist={this.state.tags} searchResourcesHandler={this.searchResourcesHandler}></SearchView>
+        return <SearchView taglist={this.state.tags}></SearchView>
       default:
         console.log("no matching view...so returned to homeview")
-        return <HomeView resources={dummyResourceList} changeViewHandler={this.changeViewHandler}></HomeView>;
+        return <HomeView changeViewHandler={this.changeViewHandler}></HomeView>;
     }
   }
 
