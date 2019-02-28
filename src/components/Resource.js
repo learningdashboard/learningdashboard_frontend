@@ -52,14 +52,22 @@ class Resource extends React.Component{
                     </div>
 
                     <div className="row">
-                      <div className="col-12">
-                        <CardLink className="d-block"><a href={this.props.resource.url} target="_blank">{this.props.resource.url}</a></CardLink>
+                      <div className="col-3">
+                        <CardLink className="d-block"><a href={this.props.resource.url} target="_blank">Open resource</a></CardLink>
+                        
+                      </div>
+                      <div className="col-4">
+                        <CardLink className="d-block"><a href={this.props.resource.url} target="_blank">Delete resource</a></CardLink>
+                      </div>
+                      <div className="col-4">
+                        <CardLink className="d-block"><a href={this.props.resource.url} target="_blank">Edit resource</a></CardLink>
                       </div>
                     </div>
 
                   </div>
 
                   <div className="col-1">
+                    <p className="float-right">info</p>
                     <i className="fas fa-angle-down fa-lg float-right"></i>
                   </div>
 
