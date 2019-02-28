@@ -18,11 +18,14 @@ const ResourceService = {
     }, 
 
     async search(arrayOfTags){
-        let url = "https://jjjnujv7j6.execute-api.eu-west-2.amazonaws.com/dev/resources/search";
+        let url = "https://jjjnujv7j6.execute-api.eu-west-2.amazonaws.com/dev/resources/search?";
         for(let i=0;i<arrayOfTags.length;i++){
-            url=url+"?"+"tags="+arrayOfTags[i]
+            console.log(url)
+            url=url+"tags="+arrayOfTags[i]+"&"
         }
+        console.log(url)
         let res = await axios.get(url)
+        console.log("results are:" + JSON.stringify(res.data))
         return res.data
     },
     
