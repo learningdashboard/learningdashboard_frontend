@@ -9,7 +9,7 @@ export default class SearchView extends React.Component{
         super(props)
         
         this.state = {
-            tagStatus: this.createTagStatusObject(),
+            tagStatus: [],
             searchTags:[],
             searchResults:[],
             taglist:[]
@@ -20,13 +20,6 @@ export default class SearchView extends React.Component{
 
     }
 
-    createTagStatusObject(){
-        let tagStatus = {}
-        for(let i=0; i<this.props.taglist.length; i++){
-            tagStatus[this.props.taglist[i]] = false
-        }
-        return tagStatus 
-    }
 
     resetcheckBoxStatus(){
         let newTagStatus = this.state.tagStatus
@@ -75,7 +68,13 @@ export default class SearchView extends React.Component{
         }catch(e){
             console.log(e)
         }  
-        this.setState({taglist:taglist})
+
+        let tagStatus = {}
+        for(let i=0; i<taglist.length; i++){
+            tagStatus[taglist[i]] = false
+        }
+    
+        this.setState({taglist:taglist, tagStatus:tagStatus})
     }
 
     handleClick(event){
