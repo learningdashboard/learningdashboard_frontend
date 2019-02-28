@@ -5,7 +5,6 @@ import HomeView from './viewcomponents/HomeView.js'
 import AddResourceView from './viewcomponents/AddResourceView.js'
 import CourseMaterialsView from './viewcomponents/CourseMaterialsView.js'
 import SearchView from './viewcomponents/SearchView.js'
-import ResourceService from './service/ResourceService';
 
 
 /* STATES:
@@ -41,18 +40,6 @@ class App extends Component {
     this.addResourceHandler = this.addResourceHandler.bind(this)
   };
 
-
-
-  async addResourceHandler(resource){
-    const response = await ResourceService.addResource(resource);
-    resource.id = response;
-
-    let currentListOfResources = await ResourceService.getResources();
-
-    this.setState({
-      resources: currentListOfResources
-    });
-  }
 
 
   changeViewHandler(view){

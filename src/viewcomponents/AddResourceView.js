@@ -2,7 +2,7 @@ import React from 'react'
 import './AddResourceView.css'
 import { InputGroup, InputGroupAddon, InputGroupText, Input } from 'reactstrap';
 import { Button, Form, FormGroup, Label, FormText } from 'reactstrap';
-
+import ResourceService from './service/ResourceService';
 
 
 
@@ -57,7 +57,7 @@ export default class AddResourceView extends React.Component {
         }
        
 
-        await this.props.addResourceHandler(newResource);
+        await ResourceService.addResource(newResource);
 
         this.resetTagStatus()
 
