@@ -35,13 +35,12 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      view:"home",
-      resources:dummyResourceList,
-      tags: dummyTagList
+      view:"home"
     };
     this.changeViewHandler = this.changeViewHandler.bind(this)
     this.addResourceHandler = this.addResourceHandler.bind(this)
   };
+
 
 
   async addResourceHandler(resource){
