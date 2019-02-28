@@ -30,78 +30,6 @@ import ResourceService from './service/ResourceService';
  * [<string>, <string>]
  */
 
-const dummyTagList = [
-  "JavaScript",
-  "Conditionals",
-  "Axios",
-  "HTML",
-  "AWS",
-  "Arrays",
-  "React",
-  "Bootstrap",
-  "mySQL",
-  "Tutorials/Practice Exercises",
-  "Loops",
-  "JS Express",
-  "CSS",
-  "Testing/TDD",
-  "Professional Development"
-]
-
-const dummyResourceList = [
-  {"id":0,
-   "title":"JavaScript Tutorial",
-   "description":"a broad introduction to JavaScript fundamentals ",
-   "url":"https://techreturners.com/",
-   "userName":"Nicola",
-   "dateAdded": new Date(2019,1,1),
-   "resourceTags":["JavaScript"]},
-   {"id":1,
-   "title":"A guide to looping in Javascript",
-   "description":"an explaination of various loops in JavaScript",
-   "url":"testurl2@testurl.com",
-   "userName":"Nicola",
-   "dateAdded": new Date(2019,1,1),
-   "resourceTags":["JavaScript","Loops"]},
-   {"id":2,
-   "title":"A guide to looping in Javascript",
-   "description":"an explaination of various loops in JavaScript",
-   "url":"testurl2@testurl.com",
-   "userName":"Nicola",
-   "dateAdded": new Date(2019,1,1),
-   "resourceTags":["JavaScript","Loops"]},
-   {"id":3,
-   "title":"A guide to looping in Javascript",
-   "description":"an explaination of various loops in JavaScript",
-   "url":"testurl2@testurl.com",
-   "userName":"Nicola",
-   "dateAdded": new Date(2019,1,1),
-   "resourceTags":["JavaScript","Loops"]},
-   {"id":4,
-   "title":"A guide to looping in Javascript",
-   "description":"an explaination of various loops in JavaScript",
-   "url":"testurl2@testurl.com",
-   "userName":"Nicola",
-   "dateAdded": new Date(2019,1,1),
-   "resourceTags":["JavaScript","Loops"]},
-   {"id":5,
-   "title":"A guide to looping in Javascript",
-   "description":"an explaination of various loops in JavaScript",
-   "url":"testurl2@testurl.com",
-   "userName":"Nicola",
-   "dateAdded": new Date(2019,1,1),
-   "resourceTags":["JavaScript","Loops"]},
-   {"id":6,
-   "title":"A guide to looping in Javascript",
-   "description":"an explaination of various loops in JavaScript",
-   "url":"testurl2@testurl.com",
-   "userName":"Nicola",
-   "dateAdded": new Date(2019,1,1),
-   "resourceTags":["JavaScript","Loops"]}
-   
-]
-
-let uniqueId=7;
 
 class App extends Component {
   constructor(props){
@@ -126,7 +54,6 @@ class App extends Component {
       resources: currentListOfResources
     });
   }
-
 
 
   changeViewHandler(view){
