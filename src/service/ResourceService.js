@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 
 const ResourceService = {
     async getResourcesTop(){
@@ -24,7 +24,14 @@ const ResourceService = {
         }
         let res = await axios.get(url)
         return res.data
-    }
+    },
+    
+    async addResource(resource){
+        let res = await axios.post("https://jjjnujv7j6.execute-api.eu-west-2.amazonaws.com/dev/resources", resource);
+        return res.data;
+    }  
+    
 };
+
 
 export default ResourceService;
