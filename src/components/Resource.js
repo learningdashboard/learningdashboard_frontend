@@ -22,8 +22,13 @@ class Resource extends React.Component{
 
   generateTagList(){
     const taglist = this.props.resource.resourceTags
-    const arrayOfTags = taglist.map((tag) =>  <span key={tag} className="tag-text-size" ><span className="badge badge-secondary">{tag}</span><span> </span></span>)
-    return arrayOfTags   
+    if(taglist != null){
+      const arrayOfTags = taglist.map((tag) =>  <span key={tag} className="tag-text-size" ><span className="badge badge-secondary">{tag}</span><span> </span></span>)
+      return arrayOfTags  
+    } else {
+      return null
+    }
+
 }
 
 
@@ -51,16 +56,23 @@ class Resource extends React.Component{
                       </div>
                     </div>
 
-                    <div className="row">
-                      <div className="col-12">
-                        <CardLink className="d-block"><a href={this.props.resource.url} target="_blank">{this.props.resource.url}</a></CardLink>
+                    <div className="row mt-2">
+                      <div className="col-1">
+                        <CardLink className="d-block" href={this.props.resource.url} target="_blank"><i className="fas fa-external-link-alt fa-1x"></i></CardLink>
+                        
+                      </div>
+                      <div className="col-1">
+                        <CardLink className="d-block" href={this.props.resource.url} target="_blank"><i className="fas fa-trash fa-1x"></i></CardLink>
+                      </div>
+                      <div className="col-1">
+                        <CardLink className="d-block" href={this.props.resource.url} target="_blank"><i className="fas fa-edit fa-1x"></i></CardLink>
                       </div>
                     </div>
 
                   </div>
 
                   <div className="col-1">
-                    <i className="fas fa-angle-down fa-lg float-right"></i>
+                     <i className="fas fa-angle-down fa-2x d-inline"></i>
                   </div>
 
                 </div>

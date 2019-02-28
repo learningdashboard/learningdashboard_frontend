@@ -2,12 +2,15 @@ import React from 'react'
 import './HomeView.css'
 import SearchResultsList from '../components/SearchResultsList'
 import {Button} from 'reactstrap'
+import ResourceService from '../service/ResourceService';
 
 
 export default class HomeView extends React.Component{
 
     constructor(props){
         super(props)
+
+        this.state={resources:[]}
 
         this.clickAddResource=this.clickAddResource.bind(this)
         this.clickSearch=this.clickSearch.bind(this)
@@ -22,7 +25,19 @@ export default class HomeView extends React.Component{
         this.props.changeViewHandler("search")
     }
 
+
+    async componentDidMount(){
+        let resources = []
+        try{
+            resources = await ResourceService.getResourcesTop();
+        }catch(e){
+            console.log(e)
+        }
+        this.setState({resources:resources});
+    }
+    
     render(){
+        console.log(this.state.resources)
         return(
            <div className="container-fluid">
                 
@@ -38,7 +53,7 @@ export default class HomeView extends React.Component{
                     <div className ="row mt-3">
                         <div className="col-12">
                             <h6>Recently added:</h6>
-                            <SearchResultsList resources={this.props.resources}></SearchResultsList>
+                            <SearchResultsList resources={this.state.resources}></SearchResultsList>
                         </div>
                     </div>
                 </div>
