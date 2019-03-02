@@ -17,6 +17,7 @@ export default class SearchView extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleClick = this.handleClick.bind(this)
+        this.refreshSearch=this.refreshSearch.bind(this)
 
     }
 
@@ -76,13 +77,8 @@ export default class SearchView extends React.Component {
         this.toggleTagStatus(event.target.id)
     }
 
-    async handleSubmit(event) {
-        event.preventDefault()
-        this.setState({ searchTags: [] }) //reset list of search tags
-        this.setState({ searchResults: [] })//reset search results
-
+    async search(){
         let searchTags = this.getSelectedTags()
-        console.log(searchTags)
         this.setState({ searchTags: searchTags }) //set list of search tags to currently clicked boxes
 
         let searchResults
@@ -93,6 +89,25 @@ export default class SearchView extends React.Component {
         }
 
         this.setState({ searchResults: searchResults }) //update state with new results
+    }
+
+    async refreshSearch(){
+        let searchResults
+        try {
+            searchResults = await ResourceService.search(this.state.searchTags)
+        } catch (e) {
+            console.log(e)
+        }
+
+        this.setState({ searchResults: searchResults }) //update state with new results
+    }
+
+
+    async handleSubmit(event) {
+        event.preventDefault()
+        
+        await this.search()
+
         this.resetcheckBoxStatus() //reset 
     }
 
@@ -140,7 +155,7 @@ export default class SearchView extends React.Component {
                         {/*row for the results*/}
                         <div className="row mt-4 justify-content-center">
                             <div className="col-10">
-                                <SearchResultList resources={this.state.searchResults}></SearchResultList>
+                                <SearchResultList resources={this.state.searchResults} changeViewHandler={this.props.changeViewHandler} refreshDataHandler={this.refreshSearch} setResource={this.props.setResource}></SearchResultList>
                             </div>
                         </div>
 

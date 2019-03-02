@@ -39,6 +39,7 @@ class SearchResultList extends React.Component {
   //triggered when a SearchResult component is clicked to expand or collapse it. It receives
   //the id of the clicked Resource component
   toggle(id) {
+    console.log("toggle called")
     console.log(id)
     //if clicked SearchResult component is already open then set openResource  to null ..so all
     //SearchResult components will be collapsed
@@ -53,13 +54,12 @@ class SearchResultList extends React.Component {
 
  async handleDelete(resourceId) {
     await ResourceService.deleteResource(resourceId);
-
-    this.props.changeViewHandler("search");
-    this.props.changeViewHandler("home");
+    this.props.refreshDataHandler()
     
   };
 
   async handleEdit(view, resource) {
+    console.log("handle edit called")
     await this.props.setResource(resource);
     this.props.changeViewHandler(view);
   };

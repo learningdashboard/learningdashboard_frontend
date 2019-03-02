@@ -78,10 +78,20 @@ export default class EditResourceView extends React.Component {
 
 
     createTagStatusObject() {
+        console.log(this.props.taglist)
+        console.log(this.props.resource.resourceTags)
         let tagStatus = {}
         for (let i = 0; i < this.props.taglist.length; i++) {
             tagStatus[this.props.taglist[i]] = false
+            for(let j = 0; j< this.props.resource.resourceTags.length; j++){
+                console.log(this.props.taglist[i])
+                console.log(this.props.resource.resourceTags[j])
+                if(this.props.taglist[i]==this.props.resource.resourceTags[j]){
+                    tagStatus[this.props.taglist[i]] = true;
+                }
+            }
         }
+        console.log(tagStatus)
         return tagStatus
     }
 

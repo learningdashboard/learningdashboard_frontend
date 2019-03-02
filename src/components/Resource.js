@@ -34,7 +34,9 @@ class Resource extends React.Component{
     }
 }
 
-deleteHandler(){
+deleteHandler(event){
+  console.log("delete called")
+  event.stopPropagation()
   let resourceId = this.props.resource.resourceId;
   this.props.deleteHandler(resourceId)
 }

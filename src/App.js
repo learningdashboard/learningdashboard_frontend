@@ -74,7 +74,7 @@ class App extends Component {
       case "course":
         return <CourseMaterialsView></CourseMaterialsView>
       case "search":
-        return <SearchView taglist={this.state.tags} ></SearchView>
+        return <SearchView changeViewHandler={this.changeViewHandler} taglist={this.state.tags} setResource={this.setResource} ></SearchView>
       case "edit":
       return <EditResourceView changeViewHandler={this.changeViewHandler} taglist={this.state.tags} resource={this.state.resource}></EditResourceView>
       default:
