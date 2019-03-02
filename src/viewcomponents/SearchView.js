@@ -78,8 +78,10 @@ export default class SearchView extends React.Component{
     async handleSubmit(event){
         event.preventDefault()
         this.setState({searchTags:[]}) //reset list of search tags
+        this.setState({searchResults:[]})//reset search results
 
         let searchTags = this.getSelectedTags()
+        console.log(searchTags)
         this.setState({searchTags:searchTags}) //set list of search tags to currently clicked boxes
 
         let searchResults
