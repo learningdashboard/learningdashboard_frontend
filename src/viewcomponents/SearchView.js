@@ -17,8 +17,8 @@ export default class SearchView extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleClick = this.handleClick.bind(this)
-
-    }
+        this.handlechangeView=this.handlechangeView.bind(this)
+    };
 
 
     resetcheckBoxStatus() {
@@ -27,7 +27,7 @@ export default class SearchView extends React.Component {
             newTagStatus[i] = false
         }
         this.setState({ tagStatus: newTagStatus })
-    }
+    };
 
     toggleTagStatus(tag) {
         console.log(this.state.tagStatus)
@@ -35,7 +35,7 @@ export default class SearchView extends React.Component {
         newTagStatus[tag] = !newTagStatus[tag]
         console.log(newTagStatus)
         this.setState({ tagStatus: newTagStatus })
-    }
+    };
 
     getSelectedTags() {
         const selectedTags = []
@@ -45,7 +45,7 @@ export default class SearchView extends React.Component {
             }
         }
         return selectedTags
-    }
+    };
 
     generateTagList() {
         const arrayOfTags = this.props.taglist.map((tag) => {
@@ -60,7 +60,7 @@ export default class SearchView extends React.Component {
             )
         })
         return arrayOfTags;
-    }
+    };
 
     createTagStatusObject() {
         let tagStatus = {}
@@ -68,13 +68,13 @@ export default class SearchView extends React.Component {
             tagStatus[this.props.taglist[i]] = false
         }
         return tagStatus
-    }
+    };
 
     handleClick(event) {
         event.preventDefault()
         console.log(event.target.id)
         this.toggleTagStatus(event.target.id)
-    }
+    };
 
     async handleSubmit(event) {
         event.preventDefault()
@@ -94,13 +94,17 @@ export default class SearchView extends React.Component {
 
         this.setState({ searchResults: searchResults }) //update state with new results
         this.resetcheckBoxStatus() //reset 
-    }
+    };
 
 
 
     generateSearchTagList() {
         const searchTagList = this.state.searchTags.map((tag) => <span key={tag} className="tag-text-size" ><span className="badge tag-label">{tag}</span><span> </span></span>)
         return searchTagList
+    };
+
+    handlechangeView(view){
+        this.props.changeViewHandler(view)
     }
 
 
@@ -140,7 +144,7 @@ export default class SearchView extends React.Component {
                         {/*row for the results*/}
                         <div className="row mt-4 justify-content-center">
                             <div className="col-10">
-                                <SearchResultList resources={this.state.searchResults}></SearchResultList>
+                                <SearchResultList currentView={this.props.currentView} changeViewHandler={this.handlechangeView} resources={this.state.searchResults}></SearchResultList>
                             </div>
                         </div>
 
@@ -149,5 +153,5 @@ export default class SearchView extends React.Component {
 
             </div>
         )
-    }
-}
+    };
+};

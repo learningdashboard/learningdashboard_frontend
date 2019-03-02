@@ -68,13 +68,13 @@ class App extends Component {
   viewSwitcher(view){
     switch(view){
       case "home":
-        return <HomeView changeViewHandler={this.changeViewHandler} setResource={this.setResource}></HomeView>
+        return <HomeView changeViewHandler={this.changeViewHandler} setResource={this.setResource}> currentView={this.state.view}</HomeView>
       case "add":
         return <AddResourceView changeViewHandler={this.changeViewHandler} taglist={this.state.tags}></AddResourceView> 
       case "course":
         return <CourseMaterialsView></CourseMaterialsView>
       case "search":
-        return <SearchView taglist={this.state.tags} ></SearchView>
+        return <SearchView changeViewHandler={this.changeViewHandler} taglist={this.state.tags} currentView={this.state.view}></SearchView>
       case "edit":
       return <EditResourceView changeViewHandler={this.changeViewHandler} taglist={this.state.tags} resource={this.state.resource}></EditResourceView>
       default:

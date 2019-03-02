@@ -60,7 +60,7 @@ export default class HomeView extends React.Component{
                     <div className ="row mt-3">
                         <div className="col-12">
                             <h6>Recently added:</h6>
-                            <SearchResultsList resources={this.state.resources} changeViewHandler={this.handlechangeView} setResource={this.props.setResource}> </SearchResultsList>
+                            <SearchResultsList currentView={this.props.currentView} resources={this.state.resources} changeViewHandler={this.handlechangeView} setResource={this.props.setResource}> </SearchResultsList>
                         </div>
                     </div>
                 </div>
