@@ -14,6 +14,8 @@ export default class HomeView extends React.Component{
 
         this.clickAddResource=this.clickAddResource.bind(this)
         this.clickSearch=this.clickSearch.bind(this)
+        
+        
     }
 
 
@@ -35,6 +37,7 @@ export default class HomeView extends React.Component{
         }
         this.setState({resources:resources});
     }
+
     
     render(){
         console.log(this.state.resources)
@@ -53,7 +56,7 @@ export default class HomeView extends React.Component{
                     <div className ="row mt-3">
                         <div className="col-12">
                             <h6>Recently added:</h6>
-                            <SearchResultsList resources={this.state.resources}></SearchResultsList>
+                            <SearchResultsList resources={this.state.resources} > </SearchResultsList>
                         </div>
                     </div>
                 </div>

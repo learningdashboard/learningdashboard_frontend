@@ -32,7 +32,11 @@ const ResourceService = {
     async addResource(resource){
         let res = await axios.post("https://jjjnujv7j6.execute-api.eu-west-2.amazonaws.com/dev/resources", resource);
         return res.data;
-    }  
+    }, 
+
+    async deleteResource(resourceId) {
+        let res = await axios.delete("https://jjjnujv7j6.execute-api.eu-west-2.amazonaws.com/dev/resources/" + resourceId) 
+    }
     
 };
 

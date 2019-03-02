@@ -3,6 +3,7 @@ import { Collapse, Button, CardBody, Card, CardTitle, CardSubtitle, CardHeader,
           CardText, ListGroup, ListGroupItem, CardLink} from 'reactstrap';
 import './Resource.css'
 
+
 /*Result component should have the following props:
   clickHandler...the method that gets called when result card is expanded
   resource....this is a JSON resource object 
@@ -11,6 +12,8 @@ import './Resource.css'
 class Resource extends React.Component{
   constructor(props) {
     super(props);
+
+    this.deleteHandler = this.deleteHandler.bind(this);
   }
 
   //function that takes the date string from the server and formats it into the
@@ -28,6 +31,13 @@ class Resource extends React.Component{
     } else {
       return null
     }
+}
+
+deleteHandler(){
+
+  let resourceId = this.props.resource.resourceId;
+
+  this.props.deleteHandler(resourceId)
 
 }
 
@@ -62,7 +72,7 @@ class Resource extends React.Component{
                         
                       </div>
                       <div className="col-1">
-                        <CardLink className="d-block" href={this.props.resource.url} target="_blank"><i className="fas fa-trash fa-1x"></i></CardLink>
+                        <CardLink className="d-block" onClick={this.deleteHandler} href="#"><i className="fas fa-trash fa-1x"></i></CardLink>
                       </div>
                       <div className="col-1">
                         <CardLink className="d-block" href={this.props.resource.url} target="_blank"><i className="fas fa-edit fa-1x"></i></CardLink>
