@@ -1,6 +1,6 @@
 import React from 'react';
-
 import Resource from './Resource'
+import ResourceService from '../service/ResourceService';
 
 /*******************************************************************************
 <SearchResultList> -- state to control which SearchResult component is expanded
@@ -22,7 +22,7 @@ import Resource from './Resource'
 
 //a component that holds all the search information and then passes this as props
 //to a search_result component to be rendered
-class SearchResultList extends React.Component{
+class SearchResultList extends React.Component {
   //constructor for the searchresultslist component so you can set initial state
   constructor(props) {
     super(props);
@@ -30,49 +30,67 @@ class SearchResultList extends React.Component{
     this.state = {
       openResource: null
     };
+
+   
   }
 
   //function that stores which SearchResult is open (not collapsed)in the state openResult,
   //triggered when a SearchResult component is clicked to expand or collapse it. It receives
   //the id of the clicked Resource component
-  toggle(id){
+  toggle(id) {
     console.log(id)
     //if clicked SearchResult component is already open then set openResource  to null ..so all
     //SearchResult components will be collapsed
-    if(this.state.openResource == id){
-      this.setState({openResource: null})
+    if (this.state.openResource == id) {
+      this.setState({ openResource: null })
     } else {
       //otherwise set the openResource state to the id of the clicked Resource component
-      this.setState({openResource: id})
+      this.setState({ openResource: id })
     }
 
   }
 
+ async handleDelete(resourceId) {
+    await ResourceService.deleteResource(resourceId);
+    
+    //can't get list component to refresh
+    alert("resource deleted" + resourceId);
+  }
+
+
+
   //generate an array of Resource components to be rendered
-  resultListOutput(){
+  resultListOutput() {
     let resultListToRender = []
 
-    for(let i=0; i<this.props.resources.length;i++){
+    for (let i = 0; i < this.props.resources.length; i++) {
       let resource = this.props.resources[i]
       let collapsed
-      if(this.state.openResource == resource.resourceId){
+      if (this.state.openResource == resource.resourceId) {
         collapsed = false;
       } else {
         collapsed = true;
       }
       //set a key for each element of the array...this helps React to identify which
       //components need to actually rerender when render is called
-      resultListToRender.push(<Resource key={resource.resourceId} resource={resource} clickHandler={this.toggle.bind(this,resource.resourceId)} collapsed={collapsed}></Resource>)
+      resultListToRender.push(
+      <Resource
+        key={resource.resourceId}
+        resource={resource}
+        clickHandler={this.toggle.bind(this, resource.resourceId)}
+        collapsed={collapsed}
+        deleteHandler={this.handleDelete}>
+        </Resource>)
     }
-
     return resultListToRender;
   }
 
-  render(){
-    return(
-          <div className="">
-            {this.resultListOutput()}
-          </div>
+ 
+  render() {
+    return (
+      <div className="">
+        {this.resultListOutput()}
+      </div>
     )
   }
 
