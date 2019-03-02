@@ -15,7 +15,6 @@ export default class HomeView extends React.Component{
         this.clickAddResource=this.clickAddResource.bind(this)
         this.clickSearch=this.clickSearch.bind(this)
         
-        
     }
 
 

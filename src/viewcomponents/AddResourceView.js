@@ -55,16 +55,25 @@ export default class AddResourceView extends React.Component {
             userName: this.state.userName,
             resourceTags: this.getSelectedTags()
         }
-       
 
-        await ResourceService.addResource(newResource);
+        if (newResource.title && newResource.url && newResource.description && newResource.userName) {
+
+            if (newResource.resourceTags.length >= 1) {
+                await ResourceService.addResource(newResource);
+                this.props.changeViewHandler("home")
+            } else {
+                alert ("Please select at least one topic tag for your resource")
+            }
+          
+        } else {
+            alert("Please complete all fields");
+
+        }
 
         //don't need to clear forms if you redirect back to homeview
         //this.resetTagStatus()
 
         //this.clearForm()
-
-        this.props.changeViewHandler("home")
 
     }
 
@@ -119,10 +128,10 @@ export default class AddResourceView extends React.Component {
             }
             return (
                 <div key={tag} className="col-6 col-md-4 tag-text-size">
-                    <button type="button" 
-                    id={tag} 
-                    className={"badge badge-secondary " + selectStatusClass} 
-                    onClick={this.handleTagClick}>{tag}</button>
+                    <button type="button"
+                        id={tag}
+                        className={"badge badge-secondary " + selectStatusClass}
+                        onClick={this.handleTagClick}>{tag}</button>
                 </div>
             )
         }
