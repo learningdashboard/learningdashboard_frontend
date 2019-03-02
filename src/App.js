@@ -3,6 +3,7 @@ import './App.css';
 import CustomNavbar from './layoutcomponents/CustomNavbar.js'
 import HomeView from './viewcomponents/HomeView.js'
 import AddResourceView from './viewcomponents/AddResourceView.js'
+import EditResourceView from './viewcomponents/EditResourceView.js'
 import CourseMaterialsView from './viewcomponents/CourseMaterialsView.js'
 import SearchView from './viewcomponents/SearchView.js'
 import ResourceService from './service/ResourceService.js'
@@ -36,9 +37,11 @@ class App extends Component {
     super(props)
     this.state = {
       view:"home",
-      tags:[]
+      tags:[],
+      resource: {}
     };
-    this.changeViewHandler = this.changeViewHandler.bind(this)
+    this.changeViewHandler = this.changeViewHandler.bind(this);
+    this.setResource=this.setResource.bind(this);
   };
 
   async componentDidMount(){
@@ -58,16 +61,22 @@ class App extends Component {
     this.setState({view:view})
   }
 
+  setResource(resource){
+    this.setState({resource: resource});
+  }
+
   viewSwitcher(view){
     switch(view){
       case "home":
-        return <HomeView changeViewHandler={this.changeViewHandler}></HomeView>
+        return <HomeView changeViewHandler={this.changeViewHandler} setResource={this.setResource}></HomeView>
       case "add":
-        return <AddResourceView changeViewHandler={this.changeViewHandler} addResourceHandler={this.addResourceHandler} taglist={this.state.tags}></AddResourceView> 
+        return <AddResourceView changeViewHandler={this.changeViewHandler} taglist={this.state.tags}></AddResourceView> 
       case "course":
         return <CourseMaterialsView></CourseMaterialsView>
       case "search":
-        return <SearchView taglist={this.state.tags}></SearchView>
+        return <SearchView taglist={this.state.tags} ></SearchView>
+      case "edit":
+      return <EditResourceView changeViewHandler={this.changeViewHandler} taglist={this.state.tags} resource={this.state.resource}></EditResourceView>
       default:
         console.log("no matching view...so returned to homeview")
         return <HomeView changeViewHandler={this.changeViewHandler}></HomeView>;

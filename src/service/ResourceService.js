@@ -35,7 +35,13 @@ const ResourceService = {
     }, 
 
     async deleteResource(resourceId) {
-        let res = await axios.delete("https://jjjnujv7j6.execute-api.eu-west-2.amazonaws.com/dev/resources/" + resourceId) 
+        let res = await axios.delete("https://jjjnujv7j6.execute-api.eu-west-2.amazonaws.com/dev/resources/" + resourceId);
+        return res.data; 
+    },
+
+    async editResource(resourceId, resource) {
+        let res = await axios.put("https://jjjnujv7j6.execute-api.eu-west-2.amazonaws.com/dev/resources/" + resourceId, resource);
+        return res.data; 
     }
     
 };

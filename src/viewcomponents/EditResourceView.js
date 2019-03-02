@@ -1,28 +1,29 @@
 import React from 'react'
 import './AddResourceView.css'
-import { InputGroup, InputGroupAddon, InputGroupText, Input } from 'reactstrap';
-import { Button, Form, FormGroup, Label, FormText } from 'reactstrap';
+import { InputGroup, InputGroupAddon, Input } from 'reactstrap';
+import { Button, Form } from 'reactstrap';
 import ResourceService from '../service/ResourceService';
 
 
 
-export default class AddResourceView extends React.Component {
+export default class EditResourceView extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            title: '',
-            url: '',
-            description: '',
-            userName: '',
+            title: this.props.resource.title,
+            url: this.props.resource.url,
+            description: this.props.resource.description,
+            userName: this.props.resource.userName,
             resourceTags: [],
-            tagStatus: this.createTagStatusObject()
+            tagStatus: this.createTagStatusObject(),
+            resourceId: this.props.resource.resourceId
 
         }
 
         this.handleTagClick = this.handleTagClick.bind(this);
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     };
 
     //handles changes to text inputs storing values in state
@@ -48,7 +49,7 @@ export default class AddResourceView extends React.Component {
     //handle submitting form
     async handleSubmit(e) {
         e.preventDefault()
-        const newResource = {
+        const updatedResource = {
             title: this.state.title,
             url: this.state.url,
             description: this.state.description,
@@ -56,10 +57,13 @@ export default class AddResourceView extends React.Component {
             resourceTags: this.getSelectedTags()
         }
 
-        if (newResource.title && newResource.url && newResource.description && newResource.userName) {
+        const resourceId = this.state.resourceId;
 
-            if (newResource.resourceTags.length >= 1) {
-                await ResourceService.addResource(newResource);
+        if (updatedResource.title && updatedResource.url && updatedResource.description && updatedResource.userName) {
+
+            if (updatedResource.resourceTags.length >= 1) {
+                await ResourceService.editResource(resourceId, updatedResource);
+
                 this.props.changeViewHandler("home");
             } else {
                 alert ("Please select at least one topic tag for your resource")
@@ -70,22 +74,8 @@ export default class AddResourceView extends React.Component {
 
         }
 
-        //don't need to clear forms if you redirect back to homeview
-        //this.resetTagStatus()
-
-        //this.clearForm()
-
     }
 
-    clearForm() {
-        this.setState({
-            title: "",
-            url: "",
-            description: "",
-            userName: "",
-            resourceTags: []
-        });
-    }
 
     createTagStatusObject() {
         let tagStatus = {}
