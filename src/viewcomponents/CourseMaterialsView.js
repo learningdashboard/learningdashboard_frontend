@@ -1,14 +1,10 @@
-import React from 'react'
-import './CourseMaterialsView.css'
-import {
-    Collapse, Button, CardBody, Card, CardTitle, CardSubtitle, CardHeader,
-    CardText, ListGroup, ListGroupItem, CardLink
-} from 'reactstrap';
+import React from 'react';
+import CourseMaterial from'./CourseMaterial';
+import './CourseMaterialsView.css';
 
 export default class CourseMaterialsView extends React.Component {
     constructor(props) {
         super(props);
-        this.openBox = this.openBox.bind(this)
 
         this.state = {
             courseMaterials: [
@@ -55,13 +51,8 @@ export default class CourseMaterialsView extends React.Component {
                     course: "Professional Development",
                     urls: ["https://drive.google.com/file/d/1RoDOrLgx46R4B-_hWIRujfQp28tS9yka/view?usp=sharing"]
                 }
-            ],
-            isOpen: false
+            ]
         }
-    }
-
-    openBox() {
-        this.setState({ isOpen: !this.state.isOpen })
     }
 
     render() {
@@ -70,52 +61,13 @@ export default class CourseMaterialsView extends React.Component {
                 <div className="row">
                     <div className="col-12">
                         <h1>Course Materials</h1>
-                        {this.state.courseMaterials.map(materials =>
-
-                            <Card className="mb-2">
-                                <CardHeader className="custom-card-header" onClick={this.openBox}>
-                                    <div className="container-fluid">
-                                        <div className="row align-items-center">
-                                            <div className="col-11">
-
-                                                <h1>{materials.course}</h1>
-                                            </div>
-
-                                            <div className="col-1">
-                                                <i className="fas fa-angle-down fa-lg float-right"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </CardHeader>
-                                <Collapse isOpen={!this.state.isOpen}>
-                                    <CardBody>
-                                        <div className="mb-1 text-muted"><em>Resource</em></div>
-                                        <div><p>
-                                            <CardLink className="d-block">
-                                                {materials.urls.map(url =>
-                                                <div>
-                                                 <a href={url} target="_blank">{url}</a>
-                                                 <br></br>
-                                                </div>
-                                                )}
-                                            </CardLink>
-                                        </p></div>
-                                    </CardBody>
-                                </Collapse>
-
-                            </Card>
-
-                        )}
+                        {this.state.courseMaterials.map((materials, i) =>
+                           <CourseMaterial materials={materials} key={i} ></CourseMaterial>
+                           )
+                        }
                     </div>
                 </div>
             </div>
         )
     }
 }
-
-
-//make each card independent dependant on topic
-//make the cards components but identify its unique aspects 
-// each card needs its own state = each the crds will need its own open/close function [independent]
-//change URL sources to  googledocs 
