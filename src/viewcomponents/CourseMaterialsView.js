@@ -1,9 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
 import CourseMaterial from'../components/CourseMaterial';
-=======
-import CourseMaterial from './CourseMaterial';
->>>>>>> Tiffany
 import './CourseMaterialsView.css';
 
 export default class CourseMaterialsView extends React.Component {
@@ -58,17 +54,6 @@ export default class CourseMaterialsView extends React.Component {
                     currentWeek: false
                 },
                 {
-<<<<<<< HEAD
-                    weekNumber: "Week 7",
-                    slides: "https://docs.google.com/document/d/1xlceEDCEM5piVF07kteUoZNEcr1nrLu13YLXxmyXyrk/edit",
-                    topic: "React - Part 2",
-                    lectureUrls: [ "https://drive.google.com/file/d/1_hlktJFqvNBCBJiqryhL3gmxytZSvZvY/view?usp=sharing",
-                                "https://drive.google.com/file/d/1BOKC9hp2CLC4ZmCdxPzfnXhRj8PrDdC3/view?usp=sharing",
-                                "https://drive.google.com/file/d/1WjflDVJZVtU9Ax0X4k9enz547ouLTskK/view?usp=sharing",
-                                "https://drive.google.com/file/d/13Ueo0dlbQuru0UpqmELTksIND5zP2Ccl/view?usp=sharing",
-                                "https://drive.google.com/file/d/1PKoUG3nNilRioaDVxheHRqycmDc--0Ir/view?usp=sharing"],
-                    currentWeek: 7
-=======
                     weekNumber: "Week 7 - React (Part 2)",
                     slide: "https://docs.google.com/document/d/1xlceEDCEM5piVF07kteUoZNEcr1nrLu13YLXxmyXyrk/edit",
                     lectureUrls: ["https://drive.google.com/file/d/1_hlktJFqvNBCBJiqryhL3gmxytZSvZvY/view?usp=sharing",
@@ -82,7 +67,6 @@ export default class CourseMaterialsView extends React.Component {
                     homeworkTaskIntro: "Insert React elements into the Application [State,Props]",
                     homeworkTaskList: [],
                     currentWeek: false
->>>>>>> Tiffany
                 },
                 {
                     weekNumber: "Week 8",
@@ -99,12 +83,6 @@ export default class CourseMaterialsView extends React.Component {
                     currentWeek: false
                 },
                 {
-<<<<<<< HEAD
-                    weekNumber: "Week 9",
-                    slides:"https://docs.google.com/document/d/17yVQ7OOU1JQhiueiDp-D1-9W_jeda6CI6A2nYd3JzE8/edit",
-                    topic: "Introduction to Databases",
-                    lectureUrls: ["https://drive.google.com/file/d/1xmBcArEO6dM1kpT2oSTAuYcSYjrN-7_u/view?usp=sharing"]
-=======
                     weekNumber: "Week 9 - Introduction to Databases",
                     slide: "https://docs.google.com/document/d/17yVQ7OOU1JQhiueiDp-D1-9W_jeda6CI6A2nYd3JzE8/edit",
                     lectureUrls: ["https://drive.google.com/file/d/1xmBcArEO6dM1kpT2oSTAuYcSYjrN-7_u/view?usp=sharing"],
@@ -112,7 +90,6 @@ export default class CourseMaterialsView extends React.Component {
                     homeworkTaskIntro: "Finish Front-end Application",
                     homeworkTaskList: [],
                     currentWeek: false
->>>>>>> Tiffany
                 },
                 {
                     weekNumber: "Week 10",
@@ -147,17 +124,10 @@ export default class CourseMaterialsView extends React.Component {
                     currentWeek: false
                 },
                 {
-<<<<<<< HEAD
-                    weekNumber: "Week 13",
-                    slides: "https://docs.google.com/document/d/1lfoDOyZJFcdiga0xGMYgvaaPKHmAnHs9YnE2sMvyhCo/edit",
-                    topic: "Career Development",
-                    lectureUrls: ["https://drive.google.com/file/d/1RoDOrLgx46R4B-_hWIRujfQp28tS9yka/view?usp=sharing"]
-=======
                     weekNumber: "Week 13 - Career Development",
                     slide: "https://docs.google.com/document/d/1lfoDOyZJFcdiga0xGMYgvaaPKHmAnHs9YnE2sMvyhCo/edit",
                     lectureUrls: ["https://drive.google.com/file/d/1RoDOrLgx46R4B-_hWIRujfQp28tS9yka/view?usp=sharing"],
                     homeworkWebinar:[]
->>>>>>> Tiffany
                 }
             ]
         }
