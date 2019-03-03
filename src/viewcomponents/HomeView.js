@@ -1,6 +1,8 @@
 import React from 'react'
 import './HomeView.css'
-import {Button, Card, CardHeader, CardBody,CardTitle,CardSubtitle,CardText,CardLink} from 'reactstrap'
+import SearchResultsList from '../components/SearchResultsList'
+import {Button} from 'reactstrap'
+import ResourceService from '../service/ResourceService';
 
 
 export default class HomeView extends React.Component{
@@ -8,7 +10,11 @@ export default class HomeView extends React.Component{
     constructor(props){
         super(props)
 
+        this.state={resources:[]}
+
         this.clickAddResource=this.clickAddResource.bind(this)
+        this.clickSearch=this.clickSearch.bind(this)
+        
     }
 
 
@@ -16,37 +22,58 @@ export default class HomeView extends React.Component{
         this.props.changeViewHandler("add")
     }
 
+    clickSearch(){
+        this.props.changeViewHandler("search")
+    }
+
+
+    async componentDidMount(){
+        let resources = []
+        try{
+            resources = await ResourceService.getResourcesTop();
+        }catch(e){
+            console.log(e)
+        }
+        this.setState({resources:resources});
+    }
+
+    
     render(){
+        console.log(this.state.resources)
         return(
-           <div className="container-fluid m-2 d-flex flex-grow-1">
-                <div className="row d-flex flex-grow-1">
-                    <div className="col-7 bg-resources d-flex">
-                        <div className="container-fluid mt-3">
-                            <div className ="row mb-3 justify-content-end">
-                                <div className="col-6 text-right">
-                                    <Button onClick={this.clickAddResource} className="add-button">Add a New Resource</Button>
-                                </div>
-                            </div>
-                            <div className ="row">
-                                <div className="col">
-                                <Card>
-                                    <CardHeader className="text-right"><Button size="sm">delete</Button></CardHeader>
-                                    <CardBody>
-                                        <CardTitle className="h5">Resource Title</CardTitle>
-                                        <CardSubtitle className="h6 text-muted mb-2">added by: Nicola</CardSubtitle>
-                                        <CardText>resource description</CardText>
-                                        <CardLink href="#">resource link</CardLink>
-                                        <Button className = "d-block mt-2 review-button" size="sm">Add Review</Button>
-                                    </CardBody>
-                                </Card>
-                                </div>
-                            </div>
+           <div className="container-fluid">
+                
+            <div className="row mt-4">
+                {/*column for resources*/}
+                <div className="col-12 col-md-7">
+                 
+                    <div className ="row mt-2 mb-3 justify-content-end">
+                            <Button type="button" onClick={this.clickAddResource} className="add-button mr-2">Add a New Resource</Button>
+                            <Button type="button" onClick={this.clickSearch} className="start-search-button">Search All Resources</Button>
+                    </div>
+
+                    <div className ="row mt-3">
+                        <div className="col-12">
+                            <h6>Recently added:</h6>
+                            <SearchResultsList resources={this.state.resources} > </SearchResultsList>
                         </div>
                     </div>
-                    <div className="col-3 d-flex">
-                    </div>
                 </div>
-           </div>
+
+                {/*column for other content*/}
+                <div className="col-12 col-md-5">
+                        
+                    <div className="row mt-3">
+                        <div className="col-12 text-center">
+                            <a className="btn btn-secondary" href="#" role="button">Test your knowledge with the Step Into Tech Quiz!</a>
+                        </div>
+                    </div>
+
+                </div>
+           
+            </div>
+        </div>
+
         )
     }
 }

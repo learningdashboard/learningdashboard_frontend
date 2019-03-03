@@ -5,6 +5,8 @@ import HomeView from './viewcomponents/HomeView.js'
 import AddResourceView from './viewcomponents/AddResourceView.js'
 import CourseMaterialsView from './viewcomponents/CourseMaterialsView.js'
 import SearchView from './viewcomponents/SearchView.js'
+import ResourceService from './service/ResourceService.js'
+
 
 /* STATES:
  * view: this is a string which specifys which page view to render based on switch statement in viewSwitcherHandler()
@@ -12,6 +14,7 @@ import SearchView from './viewcomponents/SearchView.js'
  * resources: an array of resource objects as dummy data for front end
  * [
  * {
+ * id:<number>
  * title: <string>,
  * description: <string>,
  * url: <string>,
@@ -27,43 +30,29 @@ import SearchView from './viewcomponents/SearchView.js'
  * [<string>, <string>]
  */
 
-const dummyTaskList = [
-  "JavaScript",
-  "Conditionals",
-  "Axios",
-  "HTML",
-  "AWS",
-  "Arrays",
-  "React",
-  "Bootstrap",
-  "mySQL",
-  "Tutorials/Practice Exercises",
-  "Loops",
-  "JS Express",
-  "CSS",
-  "Testing/TDD",
-  "Professional Development"
-]
-
 
 class App extends Component {
   constructor(props){
     super(props)
     this.state = {
       view:"home",
-      resources:[],
-      tags: dummyTaskList
-    }
+      tags:[]
+    };
     this.changeViewHandler = this.changeViewHandler.bind(this)
-    this.addResourceHandler = this.addResourceHandler.bind(this)
+  };
+
+  async componentDidMount(){
+    let taglist
+    try{
+        taglist = await ResourceService.getTags();
+    }catch(e){
+        console.log(e)
+    }  
+
+    this.setState({tags:taglist})
+
   }
 
-  addResourceHandler(resource){
-    let newResourcesArray = this.state.resources;
-    newResourcesArray.push(resource)
-    this.setState({resources:newResourcesArray})
-    console.log(this.state.resources)
-  }
 
   changeViewHandler(view){
     this.setState({view:view})
@@ -74,26 +63,24 @@ class App extends Component {
       case "home":
         return <HomeView changeViewHandler={this.changeViewHandler}></HomeView>
       case "add":
-        return <AddResourceView addResourceHandler={this.addResourceHandler} tagList={this.state.tags}></AddResourceView> 
+        return <AddResourceView changeViewHandler={this.changeViewHandler} addResourceHandler={this.addResourceHandler} taglist={this.state.tags}></AddResourceView> 
       case "course":
         return <CourseMaterialsView></CourseMaterialsView>
       case "search":
-        return <SearchView></SearchView>
+        return <SearchView taglist={this.state.tags}></SearchView>
       default:
         console.log("no matching view...so returned to homeview")
-        return <HomeView></HomeView>;
+        return <HomeView changeViewHandler={this.changeViewHandler}></HomeView>;
     }
   }
 
 
   render() {
     return (
-      <div id="background" className = "d-flex flex-column vh-100"> 
+        <div>
         <CustomNavbar changeViewHandler={this.changeViewHandler}></CustomNavbar>
-        <div className='d-flex flex-grow-1'>
-          {this.viewSwitcher(this.state.view)}
+        {this.viewSwitcher(this.state.view)}
         </div>
-      </div>
     )
   }
 }

@@ -1,12 +1,40 @@
 .bg-resources{
-    background-color:rgba(103, 77, 146, 0.171);
+    background-color:whitesmoke;
+    background-clip: border-box;
 }
 
 .add-button{
-    background-color:#684D92;
-    border-color: #684D92;
+    background-image:linear-gradient(to right, #007BC7, rgb(15, 146, 228));
+    border: none;
+    box-shadow: 3px 3px 2px grey;
+    margin-right: 15px;
+    margin-top: 5px;
 }
 
-.bg-card-header{
-    background-color: rgba(103, 77, 146, 0.719)
+.add-button:hover{
+    background-image:linear-gradient(to right, #012e4b, rgb(15, 146, 228));
+}   
+
+.start-search-button{
+    background-image:linear-gradient(to right, #6610f2, #9266b9 );
+    box-shadow: 3px 3px 2px grey;
+    border:  none;
+    margin-right: 15px;
+    margin-top: 5px;
+}
+
+.start-search-button:hover{
+    background-image:linear-gradient(to right, #1b0341, #9266b9 );
+}
+
+.custom-scroll{
+    overflow-y: scroll;
+}
+
+.custom-heading{
+    color: #1F45DF;
+}
+
+.card-body{
+    background-color: rgba(211, 211, 211,0.5);
 }
