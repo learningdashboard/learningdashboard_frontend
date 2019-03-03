@@ -3,6 +3,8 @@ import './HomeView.css';
 import SearchResultsList from '../components/SearchResultsList';
 import { Button } from 'reactstrap';
 import ResourceService from '../service/ResourceService';
+import WebinarList from '../components/WebinarList';
+import HomeworkTaskList from '../components/HomeworkTaskList';
 
 
 
@@ -19,13 +21,13 @@ export default class HomeView extends React.Component {
                     topic: "JavaScript",
                     slides: ["https://docs.google.com/document/d/18fA6pq6hwYo8S0OJ4lo8h2GgHK41j4PeECwiOBOR_PI/edit"],
                     lectureWebinar: ["https://drive.google.com/file/d/19IBL7aZZrBr1weP1A3qCT36e56DzW2uA/view?usp=sharing/"],
-                    homeworkWebinar: "",
+                    homeworkWebinar: [],
                     homeworkTaskIntro: "Utilise your wireframe and the sections/names you identified, in order to:",
                     homeworkTaskList: [
                         "Update your HTML to use ID’s and Classes where necessary",
                         "Style your ToDo list"
                     ],
-                    currentWeek: true
+                    currentWeek: false
                 },
                 {
                     weekNumber: 4,
@@ -33,9 +35,14 @@ export default class HomeView extends React.Component {
                     slides: "https://docs.google.com/document/d/1VwJw1Op4m2AR0N6gKeEDGABhMXwYxoSEWGlSsf8o9gI/edit",
                     lectureWebinar: ["https://drive.google.com/file/d/1aXhMP5FQ1bYQVDOx_13Lwacgy54pbd5T/view?usp=sharing"],
                     homeworkWebinar: ["https://drive.google.com/file/d/1jk8QOhPuDUGQrKRe02KNlqm7CN7C_XF6/view?usp=sharing"],
-                    homeworkTaskIntro: "",
-                    homeworkTaskList: [],
-                    currentWeek: false
+                    homeworkTaskIntro: "The following to be completed on your week-002-html repository",
+                    homeworkTaskList: ["Include the Bootstrap CSS in your HTML file", 
+                "Read up on the complete guide to a flex box", 
+                "Read up on the Bootstrap Grid System", 
+                "Convert the <table> you have used for your ‘ToDo’ list to be a grid instead",
+                "Explore more Bootstrap components, such as buttons, forms and badges"
+            ],
+                    currentWeek: true
 
                 },
                 {
@@ -167,7 +174,7 @@ export default class HomeView extends React.Component {
         const courseMaterials = this.state.courseMaterials;
         const currentWeekMaterialsArray = courseMaterials.filter(material => material.currentWeek === true);
         const currentWeekMaterials = currentWeekMaterialsArray[0];
-        
+        console.log(currentWeekMaterials.lectureWebinar)
 
         return (
             <div className="container-fluid">
@@ -207,25 +214,23 @@ export default class HomeView extends React.Component {
                                     </div>
                                     <div className="slides">
                                         <h6>This week's slides:</h6>
-
-                                        <a href={currentWeekMaterials.slides} target="blank"> <i className="fas fa-external-link-alt fa-1x"></i> access course material</a>
+                                        <a href={currentWeekMaterials.slides} target="blank"> 
+                                        <i className="fas fa-external-link-alt fa-1x"></i> access course material</a>
                                     </div>
                                     <div className="lecture">
                                         <h6>This week's lecture:</h6>
-                                        <a href={currentWeekMaterials.lectureWebinar[0]} target="blank"> <i className="fas fa-external-link-alt fa-1x"></i> access course material</a>
+                                        <WebinarList webinars={currentWeekMaterials.lectureWebinar} />
                                     </div>
                                     <div className="homework-webinar">
                                         <h6>This week's homework webinar:</h6>
-                                        <a href={currentWeekMaterials.homeworkWebinar[0]} target="blank"> <i className="fas fa-external-link-alt fa-1x"></i> access course material</a>
+                                        <WebinarList webinars={currentWeekMaterials.homeworkWebinar} />
                                     </div>
                                     <div className="homework-task text-left">
                                         <h5>Homework Tasks:</h5>
-                                        <p> {currentWeekMaterials.homeworkTaskIntro}
-                                        <ul>
-                                                <li>{currentWeekMaterials.homeworkTaskList[0]}</li>
-                                                <li>{currentWeekMaterials.homeworkTaskList[1]}</li>
-                                            </ul>
-                                        </p>
+                                        <HomeworkTaskList
+                                            homeworkTaskIntro={currentWeekMaterials.homeworkTaskIntro}
+                                            homeworkTaskList={currentWeekMaterials.homeworkTaskList}
+                                        />
                                     </div>
                                 </div>
                             </div>
