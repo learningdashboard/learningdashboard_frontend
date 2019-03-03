@@ -24,7 +24,7 @@ class CourseMaterial extends React.Component {
                     <div className="container-fluid">
                         <div className="row align-items-center">
                             <div className="col-11">
-                                <h1>{this.props.materials.course}</h1>
+                                <h1>{this.props.material.weekNumber}</h1>
                             </div>
 
                             <div className="col-1">
@@ -35,14 +35,18 @@ class CourseMaterial extends React.Component {
                 </CardHeader>
                 <Collapse isOpen={this.state.isOpen}>
                     <CardBody>
-                        <div className="mb-1 text-muted"><em>Resource</em></div>
+                        <div className="mb-1 text-muted"><em>Resources</em></div>
                         <div>
-                            {this.props.materials.urls.map(url =>
-                                <div key={this.props.materials.course + url}>
-                                    <CardLink href={url} className="d-block">{url}</CardLink>
+                            {this.props.material.lectureUrls.map(url =>
+                                <div key={this.props.material.weekNumber + url}>
+                                    Lectures: <CardLink href={url} className="d-block">{url}</CardLink>
                                     <br></br>
                                 </div>
                             )}
+                            <div>
+                                Slides: <CardLink href={this.props.material.slides} className="d-block">{this.props.material.slides}</CardLink>
+                                <br></br>
+                            </div>
                         </div>
                     </CardBody>
                 </Collapse>
