@@ -1,4 +1,5 @@
 import React from 'react';
+
 import CourseMaterial from'../components/CourseMaterial';
 import './CourseMaterialsView.css';
 
@@ -19,7 +20,7 @@ export default class CourseMaterialsView extends React.Component {
                         "Update your HTML to use ID’s and Classes where necessary",
                         "Style your ToDo list"
                     ],
-                    currentWeek: true
+                    currentWeek: false
                 },
                 {
                     weekNumber: 4,
@@ -34,7 +35,7 @@ export default class CourseMaterialsView extends React.Component {
                         "Convert the <table> you have used for your ‘ToDo’ list to be a grid instead",
                         "Explore more Bootstrap components, such as buttons, forms and badges"
                     ],
-                    currentWeek: false
+                    currentWeek: true
 
                 },
                 {
