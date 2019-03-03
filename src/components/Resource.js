@@ -14,6 +14,7 @@ class Resource extends React.Component{
     super(props);
 
     this.deleteHandler = this.deleteHandler.bind(this);
+    this.editHandler=this.editHandler.bind(this);
   }
 
   //function that takes the date string from the server and formats it into the
@@ -33,13 +34,17 @@ class Resource extends React.Component{
     }
 }
 
-deleteHandler(){
-
+deleteHandler(event){
+  console.log("delete called")
+  event.stopPropagation()
   let resourceId = this.props.resource.resourceId;
-
   this.props.deleteHandler(resourceId)
-
 }
+
+editHandler(){
+  let resource = this.props.resource;
+  this.props.editHandler("edit", resource);
+};
 
 
   render() {
@@ -75,7 +80,7 @@ deleteHandler(){
                         <CardLink className="d-block" onClick={this.deleteHandler} href="#"><i className="fas fa-trash fa-1x"></i></CardLink>
                       </div>
                       <div className="col-1">
-                        <CardLink className="d-block" href={this.props.resource.url} target="_blank"><i className="fas fa-edit fa-1x"></i></CardLink>
+                        <CardLink className="d-block" onClick={this.editHandler} href="#"><i className="fas fa-edit fa-1x"></i></CardLink>
                       </div>
                     </div>
 

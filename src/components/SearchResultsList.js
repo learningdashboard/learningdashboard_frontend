@@ -31,13 +31,15 @@ class SearchResultList extends React.Component {
       openResource: null
     };
 
-   
+   this.handleDelete=this.handleDelete.bind(this)
+   this.handleEdit=this.handleEdit.bind(this)
   }
 
   //function that stores which SearchResult is open (not collapsed)in the state openResult,
   //triggered when a SearchResult component is clicked to expand or collapse it. It receives
   //the id of the clicked Resource component
   toggle(id) {
+    console.log("toggle called")
     console.log(id)
     //if clicked SearchResult component is already open then set openResource  to null ..so all
     //SearchResult components will be collapsed
@@ -52,10 +54,15 @@ class SearchResultList extends React.Component {
 
  async handleDelete(resourceId) {
     await ResourceService.deleteResource(resourceId);
+    this.props.refreshDataHandler()
     
-    //can't get list component to refresh
-    alert("resource deleted" + resourceId);
-  }
+  };
+
+  async handleEdit(view, resource) {
+    console.log("handle edit called")
+    await this.props.setResource(resource);
+    this.props.changeViewHandler(view);
+  };
 
 
 
@@ -79,7 +86,8 @@ class SearchResultList extends React.Component {
         resource={resource}
         clickHandler={this.toggle.bind(this, resource.resourceId)}
         collapsed={collapsed}
-        deleteHandler={this.handleDelete}>
+        deleteHandler={this.handleDelete}
+        editHandler={this.handleEdit}>
         </Resource>)
     }
     return resultListToRender;
