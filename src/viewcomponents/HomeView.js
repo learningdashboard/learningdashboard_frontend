@@ -14,6 +14,8 @@ export default class HomeView extends React.Component{
 
         this.clickAddResource=this.clickAddResource.bind(this)
         this.clickSearch=this.clickSearch.bind(this)
+        this.handlechangeView=this.handlechangeView.bind(this)
+        this.refreshHomepage=this.refreshHomepage.bind(this)
         
     }
 
@@ -27,7 +29,7 @@ export default class HomeView extends React.Component{
     }
 
 
-    async componentDidMount(){
+    async refreshHomepage(){
         let resources = []
         try{
             resources = await ResourceService.getResourcesTop();
@@ -35,6 +37,14 @@ export default class HomeView extends React.Component{
             console.log(e)
         }
         this.setState({resources:resources});
+    }
+
+    async componentDidMount(){
+       await this.refreshHomepage()
+    }
+
+    handlechangeView(view){
+        this.props.changeViewHandler(view)
     }
 
     
@@ -55,7 +65,7 @@ export default class HomeView extends React.Component{
                     <div className ="row mt-3">
                         <div className="col-12">
                             <h6>Recently added:</h6>
-                            <SearchResultsList resources={this.state.resources} > </SearchResultsList>
+                            <SearchResultsList resources={this.state.resources} changeViewHandler={this.handlechangeView} refreshDataHandler={this.refreshHomepage} setResource={this.props.setResource}> </SearchResultsList>
                         </div>
                     </div>
                 </div>
