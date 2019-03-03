@@ -26,14 +26,13 @@ class CourseMaterial extends React.Component {
                             <div className="col-11">
                                 <h1>{this.props.material.weekNumber}</h1>
                             </div>
-
                             <div className="col-1">
                                 <i className="fas fa-angle-down fa-lg float-right"></i>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <Input addon type="checkbox" aria-label="Checkbox for following text input" />
+                        <Input addon type="checkbox" aria-label="Checkbox for following text input"/>
                     </div>
                 </CardHeader>
 
@@ -57,7 +56,7 @@ class CourseMaterial extends React.Component {
                             </div>
                             <div>
                                 <br></br>
-                                Homework Webinar: <CardLink href={this.props.material.homeworkWebinar} className="d-block">{this.props.material.homeworkWebinar}</CardLink>
+                                    {this.props.material.homeworkWebinar.length != 0 ? <div>Homework Webinar: <CardLink href={this.props.material.homeworkWebinar} className="d-block">{this.props.material.homeworkWebinar}</CardLink> </div> : null }
                             </div>
                         </div>
                     </CardBody>

@@ -12,7 +12,7 @@ export default class CourseMaterialsView extends React.Component {
                     weekNumber: "Week 3 - JavaScript",
                     slide: "https://docs.google.com/document/d/18fA6pq6hwYo8S0OJ4lo8h2GgHK41j4PeECwiOBOR_PI/edit",
                     lectureUrls: ["https://drive.google.com/file/d/19IBL7aZZrBr1weP1A3qCT36e56DzW2uA/view?usp=sharing/"],
-                    homeworkWebinar: "",
+                    homeworkWebinar: [],
                     homeworkTaskIntro: "Utilise your wireframe and the sections/names you identified, in order to:",
                     homeworkTaskList: [
                         "Update your HTML to use ID's and Classes where necessary",
@@ -114,14 +114,15 @@ export default class CourseMaterialsView extends React.Component {
                     slide: "https://docs.google.com/document/d/1v_AU-PCkE-lKxDCjLQHIl8L3jww-O_d15uKA3bgtYcw/edit",
                     lectureUrls: ["https://drive.google.com/file/d/1NwH4RR0jypLN7DQKsyuuxnd110zkIg9z/view?usp=sharing"],
                     homeworkWebinar: ["https://drive.google.com/file/d/1NwH4RR0jypLN7DQKsyuuxnd110zkIg9z/view?usp=sharing"],
-                    homeworkTaskIntro: "",
+                    homeworkTaskIntro: "Connect the back-end to the front-end",
                     homeworkTaskList: [],
                     currentWeek: false
                 },
                 {
                     weekNumber: "Week 13 - Career Development",
                     slide: "https://docs.google.com/document/d/1lfoDOyZJFcdiga0xGMYgvaaPKHmAnHs9YnE2sMvyhCo/edit",
-                    lectureUrls: ["https://drive.google.com/file/d/1RoDOrLgx46R4B-_hWIRujfQp28tS9yka/view?usp=sharing"]
+                    lectureUrls: ["https://drive.google.com/file/d/1RoDOrLgx46R4B-_hWIRujfQp28tS9yka/view?usp=sharing"],
+                    homeworkWebinar:[]
                 }
             ]
         }
