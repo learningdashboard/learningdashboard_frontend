@@ -28,7 +28,7 @@ export default class SearchView extends React.Component {
             newTagStatus[i] = false
         }
         this.setState({ tagStatus: newTagStatus })
-    }
+    };
 
     toggleTagStatus(tag) {
         console.log(this.state.tagStatus)
@@ -36,7 +36,7 @@ export default class SearchView extends React.Component {
         newTagStatus[tag] = !newTagStatus[tag]
         console.log(newTagStatus)
         this.setState({ tagStatus: newTagStatus })
-    }
+    };
 
     getSelectedTags() {
         const selectedTags = []
@@ -46,7 +46,7 @@ export default class SearchView extends React.Component {
             }
         }
         return selectedTags
-    }
+    };
 
     generateTagList() {
         const arrayOfTags = this.props.taglist.map((tag) => {
@@ -61,7 +61,7 @@ export default class SearchView extends React.Component {
             )
         })
         return arrayOfTags;
-    }
+    };
 
     createTagStatusObject() {
         let tagStatus = {}
@@ -69,13 +69,13 @@ export default class SearchView extends React.Component {
             tagStatus[this.props.taglist[i]] = false
         }
         return tagStatus
-    }
+    };
 
     handleClick(event) {
         event.preventDefault()
         console.log(event.target.id)
         this.toggleTagStatus(event.target.id)
-    }
+    };
 
     async search(){
         let searchTags = this.getSelectedTags()
@@ -109,13 +109,17 @@ export default class SearchView extends React.Component {
         await this.search()
 
         this.resetcheckBoxStatus() //reset 
-    }
+    };
 
 
 
     generateSearchTagList() {
         const searchTagList = this.state.searchTags.map((tag) => <span key={tag} className="tag-text-size" ><span className="badge tag-label">{tag}</span><span> </span></span>)
         return searchTagList
+    };
+
+    handlechangeView(view){
+        this.props.changeViewHandler(view)
     }
 
 
@@ -164,5 +168,5 @@ export default class SearchView extends React.Component {
 
             </div>
         )
-    }
-}
+    };
+};

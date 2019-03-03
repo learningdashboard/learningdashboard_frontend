@@ -31,8 +31,8 @@ class SearchResultList extends React.Component {
       openResource: null
     };
 
-   this.handleDelete=this.handleDelete.bind(this)
-   this.handleEdit=this.handleEdit.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
+    this.handleEdit = this.handleEdit.bind(this)
   }
 
   //function that stores which SearchResult is open (not collapsed)in the state openResult,
@@ -52,7 +52,7 @@ class SearchResultList extends React.Component {
 
   }
 
- async handleDelete(resourceId) {
+  async handleDelete(resourceId) {
     await ResourceService.deleteResource(resourceId);
     this.props.refreshDataHandler()
     
@@ -81,19 +81,19 @@ class SearchResultList extends React.Component {
       //set a key for each element of the array...this helps React to identify which
       //components need to actually rerender when render is called
       resultListToRender.push(
-      <Resource
-        key={resource.resourceId}
-        resource={resource}
-        clickHandler={this.toggle.bind(this, resource.resourceId)}
-        collapsed={collapsed}
-        deleteHandler={this.handleDelete}
-        editHandler={this.handleEdit}>
+        <Resource
+          key={resource.resourceId}
+          resource={resource}
+          clickHandler={this.toggle.bind(this, resource.resourceId)}
+          collapsed={collapsed}
+          deleteHandler={this.handleDelete}
+          editHandler={this.handleEdit}>
         </Resource>)
     }
     return resultListToRender;
   }
 
- 
+
   render() {
     return (
       <div className="">
