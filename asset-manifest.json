@@ -1,13 +1,13 @@
 {
-  "main.css": "/learningdashboard_frontend/static/css/main.c2963c49.chunk.css",
-  "main.js": "/learningdashboard_frontend/static/js/main.ebc63add.chunk.js",
-  "main.js.map": "/learningdashboard_frontend/static/js/main.ebc63add.chunk.js.map",
+  "main.css": "/learningdashboard_frontend/static/css/main.9a55533b.chunk.css",
+  "main.js": "/learningdashboard_frontend/static/js/main.74945146.chunk.js",
+  "main.js.map": "/learningdashboard_frontend/static/js/main.74945146.chunk.js.map",
   "runtime~main.js": "/learningdashboard_frontend/static/js/runtime~main.7ee78e89.js",
   "runtime~main.js.map": "/learningdashboard_frontend/static/js/runtime~main.7ee78e89.js.map",
-  "static/js/2.480e01fa.chunk.js": "/learningdashboard_frontend/static/js/2.480e01fa.chunk.js",
-  "static/js/2.480e01fa.chunk.js.map": "/learningdashboard_frontend/static/js/2.480e01fa.chunk.js.map",
+  "static/js/2.8b3ed4f5.chunk.js": "/learningdashboard_frontend/static/js/2.8b3ed4f5.chunk.js",
+  "static/js/2.8b3ed4f5.chunk.js.map": "/learningdashboard_frontend/static/js/2.8b3ed4f5.chunk.js.map",
   "index.html": "/learningdashboard_frontend/index.html",
-  "precache-manifest.abbd5e4994afa254d757015eecdbeea3.js": "/learningdashboard_frontend/precache-manifest.abbd5e4994afa254d757015eecdbeea3.js",
+  "precache-manifest.cba2650ab03c7b81c2dde437c99bcab0.js": "/learningdashboard_frontend/precache-manifest.cba2650ab03c7b81c2dde437c99bcab0.js",
   "service-worker.js": "/learningdashboard_frontend/service-worker.js",
-  "static/css/main.c2963c49.chunk.css.map": "/learningdashboard_frontend/static/css/main.c2963c49.chunk.css.map"
+  "static/css/main.9a55533b.chunk.css.map": "/learningdashboard_frontend/static/css/main.9a55533b.chunk.css.map"
 }
