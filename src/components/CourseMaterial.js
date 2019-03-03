@@ -26,14 +26,13 @@ class CourseMaterial extends React.Component {
                             <div className="col-11">
                                 <h1>{this.props.material.weekNumber}</h1>
                             </div>
-
                             <div className="col-1">
                                 <i className="fas fa-angle-down fa-lg float-right"></i>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <Input addon type="checkbox" aria-label="Checkbox for following text input" />
+                        <Input addon type="checkbox" aria-label="Checkbox for following text input"/>
                     </div>
                 </CardHeader>
 
@@ -41,15 +40,23 @@ class CourseMaterial extends React.Component {
                     <CardBody>
                         <div className="mb-1 text-muted"><em>Resources</em></div>
                         <div>
+                            Lectures:
                             {this.props.material.lectureUrls.map(url =>
                                 <div key={this.props.material.weekNumber + url}>
-                                    Lectures: <CardLink href={url} className="d-block">{url}</CardLink>
+                                    <CardLink href={url} className="d-block">{url}</CardLink>
                                     <br></br>
                                 </div>
                             )}
                             <div>
-                                Slides: <CardLink href={this.props.material.slides} className="d-block">{this.props.material.slides}</CardLink>
+                                Slides: <CardLink href={this.props.material.slide} className="d-block">{this.props.material.slide}</CardLink>
                                 <br></br>
+                            </div>
+                            <div>
+                                Homework Task: <CardLink className="d-block">{this.props.material.homeworkTaskIntro}</CardLink>
+                            </div>
+                            <div>
+                                <br></br>
+                                    {this.props.material.homeworkWebinar.length != 0 ? <div>Homework Webinar: <CardLink href={this.props.material.homeworkWebinar} className="d-block">{this.props.material.homeworkWebinar}</CardLink> </div> : null }
                             </div>
                         </div>
                     </CardBody>
