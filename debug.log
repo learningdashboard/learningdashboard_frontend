@@ -1,18 +1,13 @@
-<<<<<<< HEAD
 [0221/194147.044:ERROR:crash_report_database_win.cc(428)] unexpected header
-=======
 [0222/100848.815:ERROR:crash_report_database_win.cc(428)] unexpected header
 [0222/102122.649:ERROR:crash_report_database_win.cc(428)] unexpected header
 [0222/132902.452:ERROR:crash_report_database_win.cc(428)] unexpected header
 [0222/140339.438:ERROR:crash_report_database_win.cc(428)] unexpected header
 [0222/143314.353:ERROR:crash_report_database_win.cc(428)] unexpected header
 [0222/202516.229:ERROR:crash_report_database_win.cc(428)] unexpected header
->>>>>>> a3df45d8b9ad9b6a7796e25281544573d6fe2f66
 [0222/203042.373:ERROR:crash_report_database_win.cc(428)] unexpected header
 [0222/212056.283:ERROR:crash_report_database_win.cc(428)] unexpected header
-<<<<<<< HEAD
 [0226/114747.192:ERROR:crash_report_database_win.cc(428)] unexpected header
-=======
 [0226/110105.024:ERROR:crash_report_database_win.cc(428)] unexpected header
 [0226/110248.734:ERROR:crash_report_database_win.cc(428)] unexpected header
 [0226/110359.853:ERROR:crash_report_database_win.cc(428)] unexpected header
@@ -24,7 +19,6 @@
 [0226/121637.194:ERROR:crash_report_database_win.cc(428)] unexpected header
 [0226/140846.134:ERROR:crash_report_database_win.cc(428)] unexpected header
 [0226/143012.307:ERROR:crash_report_database_win.cc(428)] unexpected header
->>>>>>> 40a1751e8b5980c1dbf073f440acc989611070dd
 [0226/144232.057:ERROR:crash_report_database_win.cc(428)] unexpected header
 [0226/201837.188:ERROR:crash_report_database_win.cc(428)] unexpected header
 [0227/084720.562:ERROR:crash_report_database_win.cc(428)] unexpected header
@@ -47,3 +41,5 @@
 [0302/165206.091:ERROR:crash_report_database_win.cc(428)] unexpected header
 [0302/203545.926:ERROR:crash_report_database_win.cc(428)] unexpected header
 [0303/111031.146:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0303/112031.147:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0303/112031.149:ERROR:crash_report_database_win.cc(428)] unexpected header
