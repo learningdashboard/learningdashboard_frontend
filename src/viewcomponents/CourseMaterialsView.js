@@ -132,7 +132,8 @@ export default class CourseMaterialsView extends React.Component {
         return (
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-12">
+                    <div className="col-12"
+                    >
                         <h1>Course Materials</h1>
                         {this.state.courseMaterials.map((material, i) =>
                             <div>
