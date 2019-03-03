@@ -27,7 +27,7 @@ export default class HomeView extends React.Component {
                         "Update your HTML to use ID’s and Classes where necessary",
                         "Style your ToDo list"
                     ],
-                    currentWeek: false
+                    currentWeek: true
                 },
                 {
                     weekNumber: 4,
@@ -36,13 +36,13 @@ export default class HomeView extends React.Component {
                     lectureWebinar: ["https://drive.google.com/file/d/1aXhMP5FQ1bYQVDOx_13Lwacgy54pbd5T/view?usp=sharing"],
                     homeworkWebinar: ["https://drive.google.com/file/d/1jk8QOhPuDUGQrKRe02KNlqm7CN7C_XF6/view?usp=sharing"],
                     homeworkTaskIntro: "The following to be completed on your week-002-html repository",
-                    homeworkTaskList: ["Include the Bootstrap CSS in your HTML file", 
-                "Read up on the complete guide to a flex box", 
-                "Read up on the Bootstrap Grid System", 
-                "Convert the <table> you have used for your ‘ToDo’ list to be a grid instead",
-                "Explore more Bootstrap components, such as buttons, forms and badges"
-            ],
-                    currentWeek: true
+                    homeworkTaskList: ["Include the Bootstrap CSS in your HTML file",
+                        "Read up on the complete guide to a flex box",
+                        "Read up on the Bootstrap Grid System",
+                        "Convert the <table> you have used for your ‘ToDo’ list to be a grid instead",
+                        "Explore more Bootstrap components, such as buttons, forms and badges"
+                    ],
+                    currentWeek: false
 
                 },
                 {
@@ -63,7 +63,9 @@ export default class HomeView extends React.Component {
                     homeworkWebinar: ["https://drive.google.com/file/d/18h04-lEuc9BCI9bZEjxJyF2hyJvRghLv/view?usp=sharing",
                         "https://drive.google.com/file/d/17cAc18taaaf3Ga34FoblCv29vgD58ELo/view?usp=sharing"],
                     homeworkTaskIntro: "",
-                    homeworkTaskList: [],
+                    homeworkTaskList: ["Finish off porting over your index.html in to your React application",
+                        "Watch the next React webinar",
+                        "Implement one action for adding a task"],
                     currentWeek: false
                 },
                 {
@@ -76,7 +78,7 @@ export default class HomeView extends React.Component {
                         "https://drive.google.com/file/d/13Ueo0dlbQuru0UpqmELTksIND5zP2Ccl/view?usp=sharing",
                         "https://drive.google.com/file/d/1PKoUG3nNilRioaDVxheHRqycmDc--0Ir/view?usp=sharing"],
                     homeworkTaskIntro: "",
-                    homeworkTaskList: [],
+                    homeworkTaskList: ["Completion of your React ToDo list"],
                     currentWeek: false
                 },
                 {
@@ -96,7 +98,9 @@ export default class HomeView extends React.Component {
                     lectureWebinar: ["https://drive.google.com/file/d/1xmBcArEO6dM1kpT2oSTAuYcSYjrN-7_u/view?usp=sharing"],
                     homeworkWebinar: ["https://drive.google.com/file/d/1H6iPLxSrWLjACwnou5DJAPfWa4mCCXb_/view?usp=sharing"],
                     homeworkTaskIntro: "",
-                    homeworkTaskList: [],
+                    homeworkTaskList: ["Respond to email regarding AWS account",
+                        "Complete React application (Don't forget the README)",
+                        "Have some form of 1 to 1 with James (Zoom, In Person, Over slack chat)"],
                     currentWeek: false
                 },
                 {
@@ -106,7 +110,10 @@ export default class HomeView extends React.Component {
                     lectureWebinar: ["https://drive.google.com/file/d/1eFLlEFL8hBc_ZdZypvZaKJu1annDigoh/view?usp=sharing"],
                     homeworkWebinar: ["https://drive.google.com/file/d/1iPMFsBFG5hWmAx9oUQg5tTMbN7hTF64F/view?usp=sharing"],
                     homeworkTaskIntro: "",
-                    homeworkTaskList: [],
+                    homeworkTaskList: ["(Optional) Think of any app ideas for the project weeks and prepare a quick 1-2 min brief",
+                        "Watch the webinar called Week 010 - Postman usage and further serverless request method handlers",
+                        "Implement the handlers for creating tasks, deleting tasks and updating tasks",
+                        "Update those handlers to execute SQL"],
                     currentWeek: false
                 },
                 {
@@ -126,7 +133,9 @@ export default class HomeView extends React.Component {
                     lectureWebinar: ["https://drive.google.com/file/d/1RoDOrLgx46R4B-_hWIRujfQp28tS9yka/view?usp=sharing"],
                     homeworkWebinar: ["https://drive.google.com/file/d/1NwH4RR0jypLN7DQKsyuuxnd110zkIg9z/view?usp=sharing"],
                     homeworkTaskIntro: "",
-                    homeworkTaskList: [],
+                    homeworkTaskList: ["Hook up your application frontend / backend",
+                        "Meet with your project team",
+                        "Prep CV as per Beckie’s webinar"],
                     currentWeek: false
                 }
             ]
@@ -214,8 +223,8 @@ export default class HomeView extends React.Component {
                                     </div>
                                     <div className="slides">
                                         <h6>This week's slides:</h6>
-                                        <a href={currentWeekMaterials.slides} target="blank"> 
-                                        <i className="fas fa-external-link-alt fa-1x"></i> access course material</a>
+                                        <a href={currentWeekMaterials.slides} target="blank">
+                                            <i className="fas fa-external-link-alt fa-1x"></i> access course material</a>
                                     </div>
                                     <div className="lecture">
                                         <h6>This week's lecture:</h6>
