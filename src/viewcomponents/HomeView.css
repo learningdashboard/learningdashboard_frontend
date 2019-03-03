@@ -4,7 +4,7 @@
 }
 
 .add-button{
-    background-image:linear-gradient(to right, #007BC7, rgb(15, 146, 228));
+    background-image:linear-gradient(to right, #007BC7, #0f92e4);
     border: none;
     box-shadow: 3px 3px 2px grey;
     margin-right: 15px;
@@ -12,7 +12,7 @@
 }
 
 .add-button:hover{
-    background-image:linear-gradient(to right, #012e4b, rgb(15, 146, 228));
+    background-image:linear-gradient(to right, #012e4b, #0f92e4);
 }   
 
 .start-search-button{
@@ -37,4 +37,44 @@
 
 .card-body{
     background-color: rgba(211, 211, 211,0.5);
+}
+
+
+.cm-outer-box{
+    background-color:#fff;
+    text-align: left;
+    align-content: initial;  
+
+}
+
+.course-materials-list {
+    background-image:radial-gradient(to bottom, #bbeaf0, #bbeaf0, #58D0F2, #0f92e4);
+    border-radius: 1%;
+    min-height: 605px;
+    margin-top: 0px;
+}
+
+.week-topic{
+    padding-top: 20px;
+}
+
+.slides{
+    padding-top: 40px;
+}
+
+.lecture{
+    padding-top: 30px;
+}
+
+.homework-webinar{
+    padding-top: 30px;
+}
+
+.homework-task{
+    padding-top: 80px;
+    padding-left: 40px;
+}
+
+.homework-title{
+    padding-left: 0px;  
 }

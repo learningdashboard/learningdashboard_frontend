@@ -24,7 +24,7 @@ class CourseMaterial extends React.Component {
                     <div className="container-fluid">
                         <div className="row align-items-center">
                             <div className="col-11">
-                                <h1>{this.props.material.weekNumber}</h1>
+                                <h1>{this.props.material.weekNumber}: {this.props.material.topic}</h1>
                             </div>
 
                             <div className="col-1">
