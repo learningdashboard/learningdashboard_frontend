@@ -1,5 +1,8 @@
 import React from 'react';
+<<<<<<< HEAD
 
+=======
+>>>>>>> course material view upate
 import CourseMaterial from'../components/CourseMaterial';
 import './CourseMaterialsView.css';
 
@@ -62,11 +65,21 @@ export default class CourseMaterialsView extends React.Component {
                     currentWeek: false
                 },
                 {
+<<<<<<< HEAD
                     weekNumber: 7,
                     slides: "https://docs.google.com/document/d/1xlceEDCEM5piVF07kteUoZNEcr1nrLu13YLXxmyXyrk/edit",
                     topic: "React - Part 2",
                     lectureWebinar: ["https://drive.google.com/file/d/1BOKC9hp2CLC4ZmCdxPzfnXhRj8PrDdC3/view?usp=sharing",
                         "https://drive.google.com/file/d/1WjflDVJZVtU9Ax0X4k9enz547ouLTskK/view?usp=sharing"],
+=======
+                    weekNumber: "Week 7 - React (Part 2)",
+                    slide: "https://docs.google.com/document/d/1xlceEDCEM5piVF07kteUoZNEcr1nrLu13YLXxmyXyrk/edit",
+                    lectureUrls: ["https://drive.google.com/file/d/1_hlktJFqvNBCBJiqryhL3gmxytZSvZvY/view?usp=sharing",
+                        "https://drive.google.com/file/d/1BOKC9hp2CLC4ZmCdxPzfnXhRj8PrDdC3/view?usp=sharing",
+                        "https://drive.google.com/file/d/1WjflDVJZVtU9Ax0X4k9enz547ouLTskK/view?usp=sharing",
+                        "https://drive.google.com/file/d/13Ueo0dlbQuru0UpqmELTksIND5zP2Ccl/view?usp=sharing",
+                        "https://drive.google.com/file/d/1PKoUG3nNilRioaDVxheHRqycmDc--0Ir/view?usp=sharing"],
+>>>>>>> course material view upate
                     homeworkWebinar: ["https://drive.google.com/file/d/1_hlktJFqvNBCBJiqryhL3gmxytZSvZvY/view?usp=sharing",
                         "https://drive.google.com/file/d/13Ueo0dlbQuru0UpqmELTksIND5zP2Ccl/view?usp=sharing",
                         "https://drive.google.com/file/d/1PKoUG3nNilRioaDVxheHRqycmDc--0Ir/view?usp=sharing"],
@@ -85,10 +98,16 @@ export default class CourseMaterialsView extends React.Component {
                     currentWeek: false
                 },
                 {
+<<<<<<< HEAD
                     weekNumber: 9,
                     slides: "https://docs.google.com/document/d/17yVQ7OOU1JQhiueiDp-D1-9W_jeda6CI6A2nYd3JzE8/edit",
                     topic: "Introduction to Databases",
                     lectureWebinar: ["https://drive.google.com/file/d/1xmBcArEO6dM1kpT2oSTAuYcSYjrN-7_u/view?usp=sharing"],
+=======
+                    weekNumber: "Week 9 - Introduction to Databases",
+                    slide: "https://docs.google.com/document/d/17yVQ7OOU1JQhiueiDp-D1-9W_jeda6CI6A2nYd3JzE8/edit",
+                    lectureUrls: ["https://drive.google.com/file/d/1xmBcArEO6dM1kpT2oSTAuYcSYjrN-7_u/view?usp=sharing"],
+>>>>>>> course material view upate
                     homeworkWebinar: ["https://drive.google.com/file/d/1H6iPLxSrWLjACwnou5DJAPfWa4mCCXb_/view?usp=sharing"],
                     homeworkTaskIntro: "",
                     homeworkTaskList: ["Respond to email regarding AWS account",
@@ -130,6 +149,15 @@ export default class CourseMaterialsView extends React.Component {
                         "Meet with your project team",
                         "Prep CV as per Beckie’s webinar"],
                     currentWeek: false
+<<<<<<< HEAD
+=======
+                },
+                {
+                    weekNumber: "Week 13 - Career Development",
+                    slide: "https://docs.google.com/document/d/1lfoDOyZJFcdiga0xGMYgvaaPKHmAnHs9YnE2sMvyhCo/edit",
+                    lectureUrls: ["https://drive.google.com/file/d/1RoDOrLgx46R4B-_hWIRujfQp28tS9yka/view?usp=sharing"],
+                    homeworkWebinar:[]
+>>>>>>> course material view upate
                 }
             ]
         }
