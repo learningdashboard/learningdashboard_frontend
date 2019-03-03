@@ -41,15 +41,23 @@ class CourseMaterial extends React.Component {
                     <CardBody>
                         <div className="mb-1 text-muted"><em>Resources</em></div>
                         <div>
+                            Lectures:
                             {this.props.material.lectureUrls.map(url =>
                                 <div key={this.props.material.weekNumber + url}>
-                                    Lectures: <CardLink href={url} className="d-block">{url}</CardLink>
+                                    <CardLink href={url} className="d-block">{url}</CardLink>
                                     <br></br>
                                 </div>
                             )}
                             <div>
-                                Slides: <CardLink href={this.props.material.slides} className="d-block">{this.props.material.slides}</CardLink>
+                                Slides: <CardLink href={this.props.material.slide} className="d-block">{this.props.material.slide}</CardLink>
                                 <br></br>
+                            </div>
+                            <div>
+                                Homework Task: <CardLink className="d-block">{this.props.material.homeworkTaskIntro}</CardLink>
+                            </div>
+                            <div>
+                                <br></br>
+                                Homework Webinar: <CardLink href={this.props.material.homeworkWebinar} className="d-block">{this.props.material.homeworkWebinar}</CardLink>
                             </div>
                         </div>
                     </CardBody>
