@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-    Collapse, CardBody, Card, CardHeader, CardLink
+    Collapse, CardBody, Card, CardHeader, CardLink, Input
 } from 'reactstrap';
 
 class CourseMaterial extends React.Component {
@@ -20,8 +20,8 @@ class CourseMaterial extends React.Component {
     render() {
         return (
             <Card className="mb-2" key={this.props.index}>
-                <CardHeader className="custom-card-header" onClick={this.openBox}>
-                    <div className="container-fluid">
+                <CardHeader className="custom-card-header" >
+                    <div className="container-fluid" onClick={this.openBox}>
                         <div className="row align-items-center">
                             <div className="col-11">
                                 <h1>{this.props.material.weekNumber}</h1>
@@ -32,7 +32,11 @@ class CourseMaterial extends React.Component {
                             </div>
                         </div>
                     </div>
+                    <div>
+                        <Input addon type="checkbox" aria-label="Checkbox for following text input" />
+                    </div>
                 </CardHeader>
+
                 <Collapse isOpen={this.state.isOpen}>
                     <CardBody>
                         <div className="mb-1 text-muted"><em>Resources</em></div>
