@@ -26,10 +26,8 @@ class HomeworkTaskList extends React.Component {
 
   };
 
-
-
   render() {
-    
+
     return (
       <div>
 
