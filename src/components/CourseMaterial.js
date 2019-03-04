@@ -18,29 +18,29 @@ class CourseMaterial extends React.Component {
         this.setState({ isOpen: !this.state.isOpen })
     }
 
-    colorClass(){
+    colorClass() {
         console.log(this.props.currentWeek)
-        if(this.props.currentWeek == true){
+        if (this.props.currentWeek == true) {
             return "custom-card-header-blue"
         } else {
             return "custom-card-header"
         }
-    
+
     }
 
     listItemsToRender() {
         const currentWeekTasks = this.props.material.homeworkTaskList;
-    
+
         let taskListToRender = [];
-    
+
         for (let li of currentWeekTasks) {
-          taskListToRender.push(
-            <li>{li}</li>)
+            taskListToRender.push(
+                <li>{li}</li>)
         }
-    
+
         return taskListToRender;
-    
-      };
+
+    };
 
     render() {
         return (
@@ -65,21 +65,33 @@ class CourseMaterial extends React.Component {
                             Lectures:
                             {this.props.material.lectureWebinar.map(url =>
                                 <div key={this.props.material.weekNumber + url}>
-                                    <CardLink href={url} className="d-block">{url}</CardLink>
+                                    <CardLink href={url} className="d-block" target="blank">{url}</CardLink>
                                     <br></br>
                                 </div>
                             )}
                             <div>
-                                Slides: <CardLink 
-                                href={this.props.material.slides} className="d-block">{this.props.material.slides}</CardLink>
+                                Slides: <CardLink
+                                    href={this.props.material.slides} className="d-block" target="blank">{this.props.material.slides}</CardLink>
                                 <br></br>
                             </div>
                             <div>
-                                Homework Task: <CardLink className="d-block homework-tasks">{this.props.material.homeworkTaskIntro} <br/> <ul>{this.listItemsToRender()}</ul></CardLink>
+                                Homework Task: 
+                                <CardLink
+                                    className="d-block homework-tasks">{this.props.material.homeworkTaskIntro}
+                                    <br />
+                                    <ul>{this.listItemsToRender()}</ul>
+                                </CardLink>
                             </div>
                             <div>
                                 <br></br>
-                                    {this.props.material.homeworkWebinar.length != 0 ? <div>Homework Webinar: <CardLink href={this.props.material.homeworkWebinar} className="d-block">{this.props.material.homeworkWebinar}</CardLink> </div> : null }
+                                {this.props.material.homeworkWebinar.length != 0 ?
+                                    <div>Homework Webinar:
+                                        <CardLink
+                                            href={this.props.material.homeworkWebinar}
+                                            target="blank"
+                                            className="d-block">{this.props.material.homeworkWebinar}
+                                        </CardLink>
+                                    </div> : null}
                             </div>
                         </div>
                     </CardBody>
