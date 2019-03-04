@@ -49,8 +49,8 @@
 
 .course-materials-list {
     background-image:radial-gradient(to bottom, #bbeaf0, #bbeaf0, #58D0F2, #0f92e4);
-    border-radius: 1%;
-    min-height: 605px;
+    border-radius: 4px;
+    min-height: 609px;
    
 }
 
@@ -87,6 +87,7 @@
     border:  none;
     font-weight: bold;
     margin-top: -3px;
+    
 }
 
 .quiz-button:hover{
