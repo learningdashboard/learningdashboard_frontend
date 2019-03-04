@@ -2,6 +2,7 @@ import React from 'react';
 import { Collapse, Button, CardBody, Card, CardTitle, CardSubtitle, CardHeader,
           CardText, ListGroup, ListGroupItem, CardLink} from 'reactstrap';
 import './Resource.css'
+const moment = require('moment');
 
 
 /*Result component should have the following props:
@@ -100,7 +101,7 @@ editHandler(){
               in this case we pass in whether the card should be collapsed as a prop*/}
             <Collapse isOpen={!this.props.collapsed}>
               <CardBody>
-                    <div className="mb-1 text-muted"><em>Added on: {this.dateConverter(this.props.resource.dateAdded)} by {this.props.resource.userName}</em></div>
+                    <div className="mb-1 text-muted"><em>Added on: {moment(this.props.resource.dateAdded).format('DD/MM/YYYY')} by {this.props.resource.userName}</em></div>
                     <div><p>{this.props.resource["description"]}</p></div>
                    
               </CardBody>
