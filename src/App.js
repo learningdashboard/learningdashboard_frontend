@@ -183,11 +183,6 @@ class App extends Component {
 
   }
 
-
-  changeViewHandler(view){
-    this.setState({view:view})
-  }
-
   setResource(resource){
     this.setState({resource: resource});
   }
@@ -202,18 +197,26 @@ class App extends Component {
     }
   }
 
+  changeViewHandler(view){
+    this.setState({view:view})
+  }
+
   viewSwitcher(view){
     switch(view){
       case "home":
-        return <HomeView courseMaterials={this.state.courseMaterials} changeViewHandler={this.changeViewHandler} setResource={this.setResource}> currentView={this.state.view}</HomeView>
+        return <HomeView courseMaterials={this.state.courseMaterials} changeViewHandler={this.changeViewHandler} 
+                         setResource={this.setResource}></HomeView>
       case "add":
         return <AddResourceView changeViewHandler={this.changeViewHandler} taglist={this.state.tags}></AddResourceView> 
       case "course":
-        return <CourseMaterialsView setCurrentWeek={this.setCurrentWeek} courseMaterials={this.state.courseMaterials}></CourseMaterialsView>
+        return <CourseMaterialsView setCurrentWeek={this.setCurrentWeek} 
+                                    courseMaterials={this.state.courseMaterials}></CourseMaterialsView>
       case "search":
-        return <SearchView changeViewHandler={this.changeViewHandler} taglist={this.state.tags} setResource={this.setResource} ></SearchView>
+        return <SearchView changeViewHandler={this.changeViewHandler} taglist={this.state.tags} 
+                           setResource={this.setResource} ></SearchView>
       case "edit":
-      return <EditResourceView changeViewHandler={this.changeViewHandler} taglist={this.state.tags} resource={this.state.resource}></EditResourceView>
+      return <EditResourceView changeViewHandler={this.changeViewHandler} taglist={this.state.tags} 
+                               resource={this.state.resource}></EditResourceView>
       default:
         console.log("no matching view...so returned to homeview")
         return <HomeView changeViewHandler={this.changeViewHandler}></HomeView>;
