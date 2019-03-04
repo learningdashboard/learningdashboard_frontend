@@ -24,15 +24,12 @@ class CourseMaterial extends React.Component {
                     <div className="container-fluid" onClick={this.openBox}>
                         <div className="row align-items-center">
                             <div className="col-11">
-                                <h1>Week {this.props.material.weekNumber}: {this.props.material.topic}</h1>
+                                <h6>Week {this.props.material.weekNumber}: {this.props.material.topic}</h6>
                             </div>
                             <div className="col-1">
                                 <i className="fas fa-angle-down fa-lg float-right"></i>
                             </div>
                         </div>
-                    </div>
-                    <div>
-                        <Input addon type="checkbox" aria-label="Checkbox for following text input"/>
                     </div>
                 </CardHeader>
 
