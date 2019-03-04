@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/learningdashboard_frontend/static/js/2.1ec5c84f.chunk.js"
   },
   {
-    "revision": "b4f0fee7807875975ffee388e4c4c335",
+    "revision": "05036c19047403012ad607dab2bec2b4",
     "url": "/learningdashboard_frontend/index.html"
   }
 ];
