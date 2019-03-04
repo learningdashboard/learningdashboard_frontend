@@ -193,12 +193,11 @@ class App extends Component {
   }
 
   setCurrentWeek(weekNumber){
-    let newCourseMaterials = courseMaterials;
-    for(let i=0; i<newCourseMaterials.length;i++){
-      if(newCourseMaterials[i].weekNumber==weekNumber){
-        newCourseMaterials[i].currentWeek=true
+    for(let i=0; i<courseMaterials.length;i++){
+      if(courseMaterials[i].weekNumber==weekNumber){
+        courseMaterials[i].currentWeek=true
       } else {
-        newCourseMaterials[i].currentWeek=false
+        courseMaterials[i].currentWeek=false
       }
     }
   }
