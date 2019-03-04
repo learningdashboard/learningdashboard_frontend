@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "327316cbaca9a1b2242b",
-    "url": "/learningdashboard_frontend/static/css/main.af8a44f8.chunk.css"
+    "revision": "4c6894d41331321a0443",
+    "url": "/learningdashboard_frontend/static/css/main.f90ab703.chunk.css"
   },
   {
-    "revision": "327316cbaca9a1b2242b",
-    "url": "/learningdashboard_frontend/static/js/main.327316cb.chunk.js"
+    "revision": "4c6894d41331321a0443",
+    "url": "/learningdashboard_frontend/static/js/main.4c6894d4.chunk.js"
   },
   {
     "revision": "7ee78e891719b272bfad",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/learningdashboard_frontend/static/js/2.e615c1e5.chunk.js"
   },
   {
-    "revision": "71d2bc7881a7661cb8bfc7f884bb96bc",
+    "revision": "f1da29d7bf7d36e67e0d7a9f19c4f3b4",
     "url": "/learningdashboard_frontend/index.html"
   }
 ];
