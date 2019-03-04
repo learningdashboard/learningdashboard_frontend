@@ -70,7 +70,8 @@ class CourseMaterial extends React.Component {
                                 </div>
                             )}
                             <div>
-                                Slides: <CardLink href={this.props.material.slides} className="d-block">{this.props.material.slides}</CardLink>
+                                Slides: <CardLink 
+                                href={this.props.material.slides} className="d-block">{this.props.material.slides}</CardLink>
                                 <br></br>
                             </div>
                             <div>

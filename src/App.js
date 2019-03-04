@@ -183,11 +183,6 @@ class App extends Component {
 
   }
 
-
-  changeViewHandler(view){
-    this.setState({view:view})
-  }
-
   setResource(resource){
     this.setState({resource: resource});
   }
@@ -201,6 +196,10 @@ class App extends Component {
         newCourseMaterials[i].currentWeek=false
       }
     }
+  }
+
+  changeViewHandler(view){
+    this.setState({view:view})
   }
 
   viewSwitcher(view){

@@ -44,9 +44,15 @@ export default class CourseMaterialsView extends React.Component {
           console.log(this.props.courseMaterials)
           for(let i=0;i<this.props.courseMaterials.length;i++){
               if(this.props.courseMaterials[i].currentWeek == true){
-                dropdownArray.push(<DropdownItem disabled key={i} id={this.props.courseMaterials[i].weekNumber} onClick={this.onDropdownClick}>{this.props.courseMaterials[i].weekNumber}</DropdownItem>)
+                dropdownArray.push(<DropdownItem 
+                    disabled key={i} 
+                    id={this.props.courseMaterials[i].weekNumber} 
+                    onClick={this.onDropdownClick}>{this.props.courseMaterials[i].weekNumber}</DropdownItem>)
               } else {
-                dropdownArray.push(<DropdownItem key={i} id={this.props.courseMaterials[i].weekNumber} onClick={this.onDropdownClick}>{this.props.courseMaterials[i].weekNumber}</DropdownItem>)
+                dropdownArray.push(<DropdownItem 
+                    key={i} 
+                    id={this.props.courseMaterials[i].weekNumber} 
+                    onClick={this.onDropdownClick}>{this.props.courseMaterials[i].weekNumber}</DropdownItem>)
               }
           }
           return dropdownArray;
@@ -80,7 +86,8 @@ export default class CourseMaterialsView extends React.Component {
                     <div className="col-sm-10 col-12">
                         <h6>Course Materials</h6>
                         {this.props.courseMaterials.map((material, i) =>
-                            <CourseMaterial currentWeek={this.props.courseMaterials[i].currentWeek} material={material} key={i}></CourseMaterial>
+                            <CourseMaterial currentWeek={this.props.courseMaterials[i].currentWeek} 
+                            material={material} key={i}></CourseMaterial>
                         )}
                     </div>
                 </div>
