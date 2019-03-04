@@ -2,6 +2,7 @@ import React from 'react'
 import {
     Collapse, CardBody, Card, CardHeader, CardLink, Input
 } from 'reactstrap';
+import './CourseMaterial.css'
 
 class CourseMaterial extends React.Component {
     constructor(props) {
@@ -17,10 +18,20 @@ class CourseMaterial extends React.Component {
         this.setState({ isOpen: !this.state.isOpen })
     }
 
+    colorClass(){
+        console.log(this.props.currentWeek)
+        if(this.props.currentWeek == true){
+            return "custom-card-header-blue"
+        } else {
+            return "custom-card-header"
+        }
+    
+    }
+
     render() {
         return (
             <Card className="mb-2" key={this.props.index}>
-                <CardHeader className="custom-card-header" >
+                <CardHeader className={this.colorClass()} >
                     <div className="container-fluid" onClick={this.openBox}>
                         <div className="row align-items-center">
                             <div className="col-11">
