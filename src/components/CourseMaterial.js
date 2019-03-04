@@ -28,6 +28,20 @@ class CourseMaterial extends React.Component {
     
     }
 
+    listItemsToRender() {
+        const currentWeekTasks = this.props.material.homeworkTaskList;
+    
+        let taskListToRender = [];
+    
+        for (let li of currentWeekTasks) {
+          taskListToRender.push(
+            <li>{li}</li>)
+        }
+    
+        return taskListToRender;
+    
+      };
+
     render() {
         return (
             <Card className="mb-2" key={this.props.index}>
@@ -60,7 +74,7 @@ class CourseMaterial extends React.Component {
                                 <br></br>
                             </div>
                             <div>
-                                Homework Task: <CardLink className="d-block">{this.props.material.homeworkTaskList}</CardLink>
+                                Homework Task: <CardLink className="d-block">{this.props.material.homeworkTaskIntro} <br/> <ul>{this.listItemsToRender()}</ul></CardLink>
                             </div>
                             <div>
                                 <br></br>
