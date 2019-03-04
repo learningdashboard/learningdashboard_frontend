@@ -1,0 +1,12 @@
+
+.dropdown-toggle{
+    background-image:linear-gradient(to right, #007BC7, #37a1e2);
+    box-shadow: 3px 3px 2px grey;
+    border:  none;
+    margin-right: 15px;
+    margin-top: 5px;
+}
+
+.dropdown-toggle:hover{
+    background-image:linear-gradient(to right, #012e4b, #0f92e4);
+}

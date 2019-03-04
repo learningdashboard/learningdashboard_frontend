@@ -83,7 +83,7 @@ export default class HomeView extends React.Component {
 
                         <div className="row mt-3">
                             <div className="col-12 text-center">
-                                <a className="btn btn-secondary" href="#" role="button">Test your knowledge with the Step Into Tech Quiz!</a>
+                                <a className="btn btn-secondary quiz-button" href="#" role="button">Test your knowledge with the Step Into Tech Quiz!</a>
                             </div>
                         </div>
 

@@ -51,7 +51,7 @@
     background-image:radial-gradient(to bottom, #bbeaf0, #bbeaf0, #58D0F2, #0f92e4);
     border-radius: 1%;
     min-height: 605px;
-    margin-top: -4px;
+    margin-top: -1px;
 }
 
 .week-topic{
@@ -78,4 +78,15 @@
 
 .homework-title{
     padding-left: 0px;  
+}
+
+.quiz-button{
+    background-image:linear-gradient(to right,  #f3af10, #FFCD57);
+    box-shadow: 3px 3px 2px grey;
+    border:  none;
+    font-weight: bold;
+}
+
+.quiz-button:hover{
+    background-image:linear-gradient(to right,  #cf9610, #FFCD57);
 }
