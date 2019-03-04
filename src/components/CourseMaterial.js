@@ -74,7 +74,7 @@ class CourseMaterial extends React.Component {
                                 <br></br>
                             </div>
                             <div>
-                                Homework Task: <CardLink className="d-block">{this.props.material.homeworkTaskIntro} <br/> <ul>{this.listItemsToRender()}</ul></CardLink>
+                                Homework Task: <CardLink className="d-block homework-tasks">{this.props.material.homeworkTaskIntro} <br/> <ul>{this.listItemsToRender()}</ul></CardLink>
                             </div>
                             <div>
                                 <br></br>
