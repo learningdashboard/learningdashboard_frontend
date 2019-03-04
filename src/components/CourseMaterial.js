@@ -35,7 +35,7 @@ class CourseMaterial extends React.Component {
 
         for (let li of currentWeekTasks) {
             taskListToRender.push(
-                <li>{li}</li>)
+                <li key={li}>{li}</li>)
         }
 
         return taskListToRender;
