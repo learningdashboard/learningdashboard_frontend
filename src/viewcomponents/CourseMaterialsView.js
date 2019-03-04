@@ -73,11 +73,14 @@ export default class CourseMaterialsView extends React.Component {
                     </div>
                 </div>
 
+
+                {/*only change here is to pass the currentWeek true false flag to the CourseMarterial 
+                 so we can make the current week blue ... no change to your accordian logic*/}
                 <div className="row justify-content-center">
                     <div className="col-sm-10 col-12">
                         <h6>Course Materials</h6>
                         {this.props.courseMaterials.map((material, i) =>
-                            <CourseMaterial material={material} key={i}></CourseMaterial>
+                            <CourseMaterial currentWeek={this.props.courseMaterials[i].currentWeek} material={material} key={i}></CourseMaterial>
                         )}
                     </div>
                 </div>
