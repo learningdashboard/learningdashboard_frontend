@@ -65,11 +65,13 @@ const courseMaterials =
     {
       weekNumber: 5,
       topic: "Visual Studio Code Debugging",
-      slides: "https://drive.google.com/open?id=1QD7LcovC6Ksn3uz5nvh9Tm48hc7Y49zh",
+      slides: "https://drive.google.com/open?id=1M6bKMf8xVkJUSFC42jZUeamzlHrRZPw6",
       lectureWebinar: ["no lecture recording this week."],
       homeworkWebinar: ["https://drive.google.com/file/d/1KmmwiHm0EWQWCxVquCoV2QY0U6m-ecCS/view?usp=sharing"],
       homeworkTaskIntro: "Nothing here this week!",
-      homeworkTaskList: [],
+      homeworkTaskList: ["Creating your own personal GitHub Repo - starting a project from new!",
+        "Watch 2 webinars on React",
+        "Creating and running your own React application"],
       currentWeek: false
     },
     {
@@ -96,11 +98,11 @@ const courseMaterials =
         "https://drive.google.com/file/d/1PKoUG3nNilRioaDVxheHRqycmDc--0Ir/view?usp=sharing"],
       homeworkTaskIntro: "Completion of your React ToDo list: (homework for next two weeks)",
       homeworkTaskList: ["Styled using using either component styles or CSS files (or both)",
-      "Responsive elements (Bootstrap Grid)",
-      "Ability to ‘Add’ a task",
-      "Ability to ‘Delete’ a task",
-      "Ability to ‘Mark Complete’ a task",
-      "Add your own information to the README file"],
+        "Responsive elements (Bootstrap Grid)",
+        "Ability to ‘Add’ a task",
+        "Ability to ‘Delete’ a task",
+        "Ability to ‘Mark Complete’ a task",
+        "Add your own information to the README file"],
       currentWeek: false
     },
     {
@@ -148,9 +150,9 @@ const courseMaterials =
       homeworkWebinar: ["https://drive.google.com/file/d/1i1d1UZtPrfFl9ts11GYlJLL6m7vC1sWV/view?usp=sharing"],
       homeworkTaskIntro: "Complete the following tasks:",
       homeworkTaskList: ["(Optional) Think of any app ideas for the project weeks and prepare a quick 1-2 min brief",
-      "Watch the webinar called Week 010 - Postman usage and further serverless request method handlers",
-      "Implement the handlers for creating tasks, deleting tasks and updating tasks",
-      "Update those handlers to execute SQL"],
+        "Watch the webinar called Week 010 - Postman usage and further serverless request method handlers",
+        "Implement the handlers for creating tasks, deleting tasks and updating tasks",
+        "Update those handlers to execute SQL"],
       currentWeek: false
     },
     {
@@ -214,19 +216,19 @@ class App extends Component {
   viewSwitcher(view) {
     switch (view) {
       case "home":
-        return <HomeView courseMaterials={this.state.courseMaterials} changeViewHandler={this.changeViewHandler} 
-                         setResource={this.setResource}></HomeView>
+        return <HomeView courseMaterials={this.state.courseMaterials} changeViewHandler={this.changeViewHandler}
+          setResource={this.setResource}></HomeView>
       case "add":
         return <AddResourceView changeViewHandler={this.changeViewHandler} taglist={this.state.tags}></AddResourceView>
       case "course":
-        return <CourseMaterialsView setCurrentWeek={this.setCurrentWeek} 
-                                    courseMaterials={this.state.courseMaterials}></CourseMaterialsView>
+        return <CourseMaterialsView setCurrentWeek={this.setCurrentWeek}
+          courseMaterials={this.state.courseMaterials}></CourseMaterialsView>
       case "search":
-        return <SearchView changeViewHandler={this.changeViewHandler} taglist={this.state.tags} 
-                           setResource={this.setResource} ></SearchView>
+        return <SearchView changeViewHandler={this.changeViewHandler} taglist={this.state.tags}
+          setResource={this.setResource} ></SearchView>
       case "edit":
-      return <EditResourceView changeViewHandler={this.changeViewHandler} taglist={this.state.tags} 
-                               resource={this.state.resource}></EditResourceView>
+        return <EditResourceView changeViewHandler={this.changeViewHandler} taglist={this.state.tags}
+          resource={this.state.resource}></EditResourceView>
       default:
         console.log("no matching view...so returned to homeview")
         return <HomeView changeViewHandler={this.changeViewHandler}></HomeView>;
