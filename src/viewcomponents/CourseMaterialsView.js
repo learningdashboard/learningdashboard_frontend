@@ -154,7 +154,7 @@ export default class CourseMaterialsView extends React.Component {
 
 
                 <div className="row mt-3 justify-content-center">
-                    <div className="col-12 col-sm-10 text-right">
+                    <div className="col-sm-12 col-md-9 text-right">
 
                         <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggleDropDown}>
                             <DropdownToggle caret>set current week</DropdownToggle>
@@ -182,7 +182,7 @@ export default class CourseMaterialsView extends React.Component {
 
 
                 <div className="row justify-content-center">
-                    <div className="col-sm-10 col-12">
+                    <div className="col-sm-12 col-md-9">
                         <h6>Course Materials</h6>
                         {this.props.courseMaterials.map((material, i) =>
                             <CourseMaterial currentWeek={this.props.courseMaterials[i].currentWeek}

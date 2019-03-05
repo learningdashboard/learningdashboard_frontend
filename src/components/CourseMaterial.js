@@ -45,7 +45,7 @@ class CourseMaterial extends React.Component {
     render() {
         return (
             <Card className="mb-2" key={this.props.index}>
-                <CardHeader className={this.colorClass()} >
+                <CardHeader className={this.colorClass()}>
                     <div className="container-fluid" onClick={this.openBox}>
                         <div className="row align-items-center">
                             <div className="col-11">
