@@ -160,7 +160,7 @@ export default class CourseMaterialsView extends React.Component {
                             <DropdownToggle caret>set current week</DropdownToggle>
                             <DropdownMenu>
                                 {this.props.courseMaterials.map((material, i) => {
-                                    if (material.currentweek) {
+                                    if (material.currentWeek) {
                                         return <DropdownItem
                                             disabled={true} key={i}
                                             id={material.weekNumber}
