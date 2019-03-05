@@ -185,7 +185,7 @@ export default class CourseMaterialsView extends React.Component {
                     <div className="col-sm-12 col-md-9">
                         <h6>Course Materials</h6>
                         {this.props.courseMaterials.map((material, i) =>
-                            <CourseMaterial currentWeek={this.props.courseMaterials[i].currentWeek}
+                            <CourseMaterial currentWeek={material.currentWeek}
                                 material={material} key={i}></CourseMaterial>
                         )}
                     </div>
